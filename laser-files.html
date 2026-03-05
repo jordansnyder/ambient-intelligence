@@ -278,11 +278,10 @@
     justify-content: center;
     align-items: center;
     min-height: 300px;
-    background:
-      repeating-linear-gradient(0deg, rgba(200,169,110,0.02) 0px, rgba(200,169,110,0.02) 1px, transparent 1px, transparent 20px),
-      repeating-linear-gradient(90deg, rgba(200,169,110,0.02) 0px, rgba(200,169,110,0.02) 1px, transparent 1px, transparent 20px);
+    background: #f0ede8;
     overflow: auto;
     position: relative;
+    z-index: 1002;
   }
 
   .svg-viewport svg {
@@ -468,8 +467,24 @@
           svgEl.style.maxWidth = '100%';
           svgEl.style.height = 'auto';
           svgEl.style.maxHeight = '600px';
-          // Make background dark to match theme
           svgEl.style.background = 'transparent';
+          // Remap colors for light viewport background
+          svgEl.querySelectorAll('[stroke="#FF0000"]').forEach(el => el.setAttribute('stroke', '#cc0000'));
+          svgEl.querySelectorAll('[stroke="#0000FF"]').forEach(el => el.setAttribute('stroke', '#2244cc'));
+          svgEl.querySelectorAll('[fill="#0000FF"]').forEach(el => el.setAttribute('fill', '#2244cc'));
+          svgEl.querySelectorAll('[stroke="#00AA00"]').forEach(el => el.setAttribute('stroke', '#228833'));
+          svgEl.querySelectorAll('[fill="#00AA00"]').forEach(el => el.setAttribute('fill', '#228833'));
+          svgEl.querySelectorAll('[stroke="#AAAAAA"]').forEach(el => el.setAttribute('stroke', '#bbbbbb'));
+          // Boost thin stroke widths for visibility
+          svgEl.querySelectorAll('#CUT *').forEach(el => {
+            const sw = parseFloat(el.getAttribute('stroke-width'));
+            if (sw && sw < 0.4) el.setAttribute('stroke-width', '0.6');
+          });
+          // Boost etch opacity
+          svgEl.querySelectorAll('#ETCH-DEEP [opacity]').forEach(el => {
+            const op = parseFloat(el.getAttribute('opacity'));
+            if (op && op < 0.5) el.setAttribute('opacity', Math.min(op * 2.5, 0.8));
+          });
         }
       });
   });
