@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="304.8mm" height="406.4mm" 
+     viewBox="0 0 304.8 406.4"
+     style="background: transparent;">
+  
+  <defs>
+    <!-- Grid pattern for alignment (etch layer) -->
+    <pattern id="grid10" width="10" height="10" patternUnits="userSpaceOnUse">
+      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#AAAAAA" stroke-width="0.1" opacity="0.3"/>
+    </pattern>
+    <pattern id="grid50" width="50" height="50" patternUnits="userSpaceOnUse">
+      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#AAAAAA" stroke-width="0.15" opacity="0.4"/>
+    </pattern>
+    
+    <!-- Topographic contour pattern (etch layer - decorative) -->
+    <clipPath id="panelClip">
+      <rect x="5" y="5" width="294.8" height="396.4" rx="3"/>
+    </clipPath>
+  </defs>
+  
+  <!-- ============================================ -->
+  <!-- LAYER: CUT (RED) - Laser cuts through        -->
+  <!-- LAYER: ETCH-DEEP (BLUE) - Deep engrave        -->
+  <!-- LAYER: ETCH-LIGHT (GREEN) - Light raster etch -->
+  <!-- ============================================ -->
+  
+  <!-- === CUT LAYER (RED #FF0000) === -->
+  <g id="CUT" fill="none" stroke="#FF0000" stroke-width="0.1">
+    
+    <!-- Outer panel boundary - rounded corners -->
+    <rect x="0" y="0" width="304.8" height="406.4" rx="5" ry="5"/>
+    
+    <!-- Corner mounting holes (M4 = 4.2mm drill) -->
+    <circle cx="12" cy="12" r="2.1"/>
+    <circle cx="292.8" cy="12" r="2.1"/>
+    <circle cx="12" cy="394.4" r="2.1"/>
+    <circle cx="292.8" cy="394.4" r="2.1"/>
+    
+    <!-- Mid-edge mounting holes (for optional french cleat or bracket) -->
+    <circle cx="152.4" cy="12" r="2.1"/>
+    <circle cx="152.4" cy="394.4" r="2.1"/>
+    
+    <!-- Standoff holes for device mounting layer (M3 = 3.2mm) -->
+    <!-- Row 1 -->
+    <circle cx="40" cy="60" r="1.6"/>
+    <circle cx="152.4" cy="60" r="1.6"/>
+    <circle cx="264.8" cy="60" r="1.6"/>
+    <!-- Row 2 -->
+    <circle cx="40" cy="140" r="1.6"/>
+    <circle cx="152.4" cy="140" r="1.6"/>
+    <circle cx="264.8" cy="140" r="1.6"/>
+    <!-- Row 3 -->
+    <circle cx="40" cy="220" r="1.6"/>
+    <circle cx="152.4" cy="220" r="1.6"/>
+    <circle cx="264.8" cy="220" r="1.6"/>
+    <!-- Row 4 -->
+    <circle cx="40" cy="300" r="1.6"/>
+    <circle cx="152.4" cy="300" r="1.6"/>
+    <circle cx="264.8" cy="300" r="1.6"/>
+    
+    <!-- Cable routing slots (bottom edge) -->
+    <rect x="60" y="390" width="30" height="8" rx="2"/>
+    <rect x="137.4" y="390" width="30" height="8" rx="2"/>
+    <rect x="214.8" y="390" width="30" height="8" rx="2"/>
+    
+    <!-- Ventilation slots (top edge, for convective airflow) -->
+    <rect x="80" y="8" width="20" height="4" rx="1"/>
+    <rect x="142.4" y="8" width="20" height="4" rx="1"/>
+    <rect x="204.8" y="8" width="20" height="4" rx="1"/>
+    
+    <!-- Info strip mounting slots (bottom area) -->
+    <rect x="25" y="365" width="3" height="8" rx="0.5"/>
+    <rect x="276.8" y="365" width="3" height="8" rx="0.5"/>
+    
+  </g>
+  
+  <!-- === ETCH-LIGHT LAYER (GREEN #00AA00) - Alignment Grid === -->
+  <g id="ETCH-LIGHT" clip-path="url(#panelClip)">
+    <rect x="5" y="5" width="294.8" height="396.4" fill="url(#grid10)"/>
+    <rect x="5" y="5" width="294.8" height="396.4" fill="url(#grid50)"/>
+  </g>
+  
+  <!-- === ETCH-DEEP LAYER (BLUE #0000FF) - Specimen Info === -->
+  <g id="ETCH-DEEP" fill="#0000FF" stroke="none" font-family="'Courier New', monospace">
+    
+    <!-- Specimen ID block (top-left) -->
+    <text x="25" y="35" font-size="5" letter-spacing="0.5">ARC-2026-AI-___</text>
+    <text x="25" y="42" font-size="3" letter-spacing="0.3">AMBIENT INTELLIGENCE RESEARCH ARCHIVE</text>
+    <text x="25" y="47" font-size="2.5" letter-spacing="0.3">CATALOGED: 2026.04 | CLASS: ΣΩ-ACTIVE</text>
+    
+    <!-- Classification bar (top-right) -->
+    <rect x="230" y="25" width="55" height="0.3"/>
+    <text x="230" y="33" font-size="2.5" letter-spacing="0.8">MAESTRA NETWORK</text>
+    <text x="230" y="37" font-size="2" letter-spacing="0.5">NODE: ___  FREQ: ADAPTIVE</text>
+    <text x="230" y="41" font-size="2" letter-spacing="0.5">PROTOCOL: MQTT/OSC</text>
+    <rect x="230" y="43" width="55" height="0.3"/>
+    
+    <!-- Decorative glyphs along left edge -->
+    <text x="10" y="80" font-size="3" opacity="0.6">◈</text>
+    <text x="10" y="120" font-size="3" opacity="0.6">◉</text>
+    <text x="10" y="160" font-size="3" opacity="0.6">◎</text>
+    <text x="10" y="200" font-size="3" opacity="0.6">◈</text>
+    <text x="10" y="240" font-size="3" opacity="0.6">◉</text>
+    <text x="10" y="280" font-size="3" opacity="0.6">◎</text>
+    <text x="10" y="320" font-size="3" opacity="0.6">◈</text>
+    
+    <!-- Scale markers along bottom -->
+    <line x1="25" y1="355" x2="280" y2="355" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="25" y1="353" x2="25" y2="357" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="75" y1="354" x2="75" y2="356" stroke="#0000FF" stroke-width="0.1"/>
+    <line x1="125" y1="353" x2="125" y2="357" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="175" y1="354" x2="175" y2="356" stroke="#0000FF" stroke-width="0.1"/>
+    <line x1="225" y1="353" x2="225" y2="357" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="280" y1="353" x2="280" y2="357" stroke="#0000FF" stroke-width="0.15"/>
+    <text x="25" y="361" font-size="1.8">0</text>
+    <text x="123" y="361" font-size="1.8">100</text>
+    <text x="223" y="361" font-size="1.8">200</text>
+    <text x="271" y="361" font-size="1.8">mm</text>
+    
+    <!-- Topographic contour lines (decorative background etch) -->
+    <g opacity="0.15" fill="none" stroke="#0000FF" stroke-width="0.2">
+      <ellipse cx="200" cy="180" rx="80" ry="50" transform="rotate(-15 200 180)"/>
+      <ellipse cx="200" cy="180" rx="65" ry="40" transform="rotate(-15 200 180)"/>
+      <ellipse cx="200" cy="180" rx="50" ry="30" transform="rotate(-15 200 180)"/>
+      <ellipse cx="200" cy="180" rx="35" ry="20" transform="rotate(-15 200 180)"/>
+      <ellipse cx="200" cy="180" rx="20" ry="12" transform="rotate(-15 200 180)"/>
+      
+      <ellipse cx="80" cy="280" rx="60" ry="45" transform="rotate(20 80 280)"/>
+      <ellipse cx="80" cy="280" rx="45" ry="33" transform="rotate(20 80 280)"/>
+      <ellipse cx="80" cy="280" rx="30" ry="22" transform="rotate(20 80 280)"/>
+      <ellipse cx="80" cy="280" rx="18" ry="13" transform="rotate(20 80 280)"/>
+    </g>
+    
+    <!-- Corner registration marks -->
+    <line x1="2" y1="20" x2="2" y2="2" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="2" y1="2" x2="20" y2="2" stroke="#0000FF" stroke-width="0.15"/>
+    
+    <line x1="284.8" y1="2" x2="302.8" y2="2" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="302.8" y1="2" x2="302.8" y2="20" stroke="#0000FF" stroke-width="0.15"/>
+    
+    <line x1="2" y1="386.4" x2="2" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="2" y1="404.4" x2="20" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
+    
+    <line x1="302.8" y1="386.4" x2="302.8" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
+    <line x1="284.8" y1="404.4" x2="302.8" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
+    
+  </g>
+  
+</svg>

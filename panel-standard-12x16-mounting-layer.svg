@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="304.8mm" height="406.4mm" 
+     viewBox="0 0 304.8 406.4"
+     style="background: transparent;">
+  
+  <!-- ============================================ -->
+  <!-- DEVICE MOUNTING LAYER (Clear/Frosted Acrylic) -->
+  <!-- Sits on standoffs above backplate             -->
+  <!-- All paths are CUT (RED)                       -->
+  <!-- Customize per artist - these are EXAMPLES     -->
+  <!-- ============================================ -->
+  
+  <g id="CUT" fill="none" stroke="#FF0000" stroke-width="0.1">
+    
+    <!-- Outer boundary - matches backplate -->
+    <rect x="0" y="0" width="304.8" height="406.4" rx="5" ry="5"/>
+    
+    <!-- Corner mounting holes (must align with backplate) -->
+    <circle cx="12" cy="12" r="2.1"/>
+    <circle cx="292.8" cy="12" r="2.1"/>
+    <circle cx="12" cy="394.4" r="2.1"/>
+    <circle cx="292.8" cy="394.4" r="2.1"/>
+    <circle cx="152.4" cy="12" r="2.1"/>
+    <circle cx="152.4" cy="394.4" r="2.1"/>
+    
+    <!-- Standoff through-holes (M3, align with backplate) -->
+    <circle cx="40" cy="60" r="1.6"/>
+    <circle cx="152.4" cy="60" r="1.6"/>
+    <circle cx="264.8" cy="60" r="1.6"/>
+    <circle cx="40" cy="140" r="1.6"/>
+    <circle cx="152.4" cy="140" r="1.6"/>
+    <circle cx="264.8" cy="140" r="1.6"/>
+    <circle cx="40" cy="220" r="1.6"/>
+    <circle cx="152.4" cy="220" r="1.6"/>
+    <circle cx="264.8" cy="220" r="1.6"/>
+    <circle cx="40" cy="300" r="1.6"/>
+    <circle cx="152.4" cy="300" r="1.6"/>
+    <circle cx="264.8" cy="300" r="1.6"/>
+    
+    <!-- ============================== -->
+    <!-- DEVICE CUTOUT: Raspberry Pi 4  -->
+    <!-- Board: 85mm x 56mm             -->
+    <!-- Mounting: 58mm x 49mm (M2.5)   -->
+    <!-- Position: Upper-left zone       -->
+    <!-- ============================== -->
+    <g id="rpi4-cutout" transform="translate(45, 70)">
+      <!-- Board outline (for reference, etch only) -->
+      <rect x="0" y="0" width="85" height="56" rx="3" 
+            stroke="#00AA00" stroke-width="0.1" stroke-dasharray="2,1"/>
+      <!-- Mounting holes M2.5 (2.7mm) -->
+      <circle cx="3.5" cy="3.5" r="1.35"/>
+      <circle cx="61.5" cy="3.5" r="1.35"/>
+      <circle cx="3.5" cy="52.5" r="1.35"/>
+      <circle cx="61.5" cy="52.5" r="1.35"/>
+      <!-- USB/Ethernet port access cutout -->
+      <rect x="75" y="-3" width="14" height="62" rx="2"/>
+      <!-- SD card access slot (bottom) -->
+      <rect x="20" y="53" width="18" height="6" rx="1"/>
+      <!-- Power USB-C access -->
+      <rect x="-4" y="20" width="8" height="12" rx="1"/>
+      <!-- Label (etch) -->
+      <text x="25" y="-5" font-family="'Courier New', monospace" font-size="2.5" 
+            fill="#00AA00" stroke="none" letter-spacing="0.5">RPi 4 [85×56mm]</text>
+    </g>
+    
+    <!-- ============================== -->
+    <!-- DEVICE CUTOUT: Arduino Uno     -->
+    <!-- Board: 68.6mm x 53.4mm         -->
+    <!-- Position: Upper-right zone      -->
+    <!-- ============================== -->
+    <g id="arduino-uno-cutout" transform="translate(175, 70)">
+      <!-- Board outline (reference) -->
+      <rect x="0" y="0" width="68.6" height="53.4" rx="2" 
+            stroke="#00AA00" stroke-width="0.1" stroke-dasharray="2,1"/>
+      <!-- Mounting holes (M3) -->
+      <circle cx="13.97" cy="2.54" r="1.6"/>
+      <circle cx="66.04" cy="7.62" r="1.6"/>
+      <circle cx="66.04" cy="35.56" r="1.6"/>
+      <circle cx="15.24" cy="50.8" r="1.6"/>
+      <!-- USB-B access -->
+      <rect x="-4" y="15" width="8" height="16" rx="1"/>
+      <!-- Power barrel jack access -->
+      <rect x="-4" y="37" width="8" height="12" rx="1"/>
+      <!-- Label -->
+      <text x="15" y="-5" font-family="'Courier New', monospace" font-size="2.5" 
+            fill="#00AA00" stroke="none" letter-spacing="0.5">UNO [68.6×53.4mm]</text>
+    </g>
+    
+    <!-- ============================== -->
+    <!-- DEVICE CUTOUT: Generic Small   -->
+    <!-- (ESP32, Arduino Nano, etc)     -->
+    <!-- Position: Center zone           -->
+    <!-- ============================== -->
+    <g id="generic-small-cutout" transform="translate(110, 180)">
+      <!-- Universal slot for small boards -->
+      <rect x="0" y="0" width="55" height="28" rx="2" 
+            stroke="#00AA00" stroke-width="0.1" stroke-dasharray="2,1"/>
+      <!-- Mounting slots (elongated for flexibility) -->
+      <rect x="5" y="-2" width="8" height="3" rx="1"/>
+      <rect x="42" y="-2" width="8" height="3" rx="1"/>
+      <rect x="5" y="27" width="8" height="3" rx="1"/>
+      <rect x="42" y="27" width="8" height="3" rx="1"/>
+      <!-- USB access -->
+      <rect x="-4" y="8" width="8" height="12" rx="1"/>
+      <!-- Label -->
+      <text x="5" y="-7" font-family="'Courier New', monospace" font-size="2.5" 
+            fill="#00AA00" stroke="none" letter-spacing="0.5">GENERIC SM [55×28mm]</text>
+    </g>
+    
+    <!-- ============================== -->
+    <!-- DEVICE CUTOUT: USB Audio Iface -->
+    <!-- Approx: 120mm x 80mm          -->
+    <!-- Position: Lower zone            -->
+    <!-- ============================== -->
+    <g id="audio-interface-cutout" transform="translate(85, 240)">
+      <rect x="0" y="0" width="120" height="80" rx="3" 
+            stroke="#00AA00" stroke-width="0.1" stroke-dasharray="2,1"/>
+      <!-- Corner mounting M3 -->
+      <circle cx="8" cy="8" r="1.6"/>
+      <circle cx="112" cy="8" r="1.6"/>
+      <circle cx="8" cy="72" r="1.6"/>
+      <circle cx="112" cy="72" r="1.6"/>
+      <!-- Cable access slots (rear) -->
+      <rect x="20" y="77" width="25" height="6" rx="1"/>
+      <rect x="75" y="77" width="25" height="6" rx="1"/>
+      <!-- Front panel access -->
+      <rect x="20" y="-3" width="80" height="6" rx="1"/>
+      <!-- Label -->
+      <text x="20" y="-8" font-family="'Courier New', monospace" font-size="2.5" 
+            fill="#00AA00" stroke="none" letter-spacing="0.5">AUDIO I/F [120×80mm]</text>
+    </g>
+    
+    <!-- ================================ -->
+    <!-- CABLE ROUTING CHANNELS           -->
+    <!-- Slots between layers for wiring  -->
+    <!-- ================================ -->
+    
+    <!-- Vertical cable channel (left side) -->
+    <rect x="22" y="60" width="5" height="300" rx="1"/>
+    
+    <!-- Vertical cable channel (right side) -->
+    <rect x="278" y="60" width="5" height="300" rx="1"/>
+    
+    <!-- Horizontal cable channel (mid) -->
+    <rect x="30" y="155" width="245" height="4" rx="1"/>
+    
+    <!-- Bottom cable exit slots (align with backplate) -->
+    <rect x="60" y="390" width="30" height="8" rx="2"/>
+    <rect x="137.4" y="390" width="30" height="8" rx="2"/>
+    <rect x="214.8" y="390" width="30" height="8" rx="2"/>
+    
+    <!-- Info strip mounting slots -->
+    <rect x="25" y="365" width="3" height="8" rx="0.5"/>
+    <rect x="276.8" y="365" width="3" height="8" rx="0.5"/>
+    
+  </g>
+  
+  <!-- Reference text (etch layer) -->
+  <g fill="#00AA00" stroke="none" font-family="'Courier New', monospace">
+    <text x="15" y="400" font-size="2">MOUNTING LAYER | 3mm CLEAR/FROSTED ACRYLIC | CUSTOMIZE CUTOUTS PER ARTIST</text>
+  </g>
+  
+</svg>
