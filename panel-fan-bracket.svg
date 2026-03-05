@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="80mm" height="55mm" 
+     viewBox="0 0 80 55"
+     style="background: transparent;">
+  
+  <!-- ============================================ -->
+  <!-- FAN BRACKET - Clear Acrylic (3mm)            -->
+  <!-- Mounts below panel for active cooling         -->
+  <!-- Accommodates 40mm Noctua fan                  -->
+  <!-- ============================================ -->
+  
+  <g id="CUT" fill="none" stroke="#FF0000" stroke-width="0.1">
+    
+    <!-- Outer boundary -->
+    <rect x="0" y="0" width="80" height="55" rx="3" ry="3"/>
+    
+    <!-- 40mm fan circular cutout -->
+    <circle cx="40" cy="27.5" r="19"/>
+    
+    <!-- Fan mounting holes (M3, 32mm spacing on 40mm fan) -->
+    <circle cx="24" cy="11.5" r="1.6"/>
+    <circle cx="56" cy="11.5" r="1.6"/>
+    <circle cx="24" cy="43.5" r="1.6"/>
+    <circle cx="56" cy="43.5" r="1.6"/>
+    
+    <!-- Panel attachment holes (M3, align with bottom standoffs) -->
+    <circle cx="8" cy="8" r="1.6"/>
+    <circle cx="72" cy="8" r="1.6"/>
+    <circle cx="8" cy="47" r="1.6"/>
+    <circle cx="72" cy="47" r="1.6"/>
+    
+    <!-- Wire pass-through slot -->
+    <rect x="62" y="24" width="12" height="4" rx="1"/>
+    
+    <!-- Airflow grille slots (cosmetic + functional) -->
+    <rect x="30" y="4" width="20" height="2" rx="0.5"/>
+    <rect x="30" y="49" width="20" height="2" rx="0.5"/>
+    
+  </g>
+  
+  <g id="ETCH-DEEP" fill="#0000FF" stroke="none" font-family="'Courier New', monospace">
+    <text x="5" y="52" font-size="1.8" letter-spacing="0.3">THERMAL MGMT UNIT | 40mm | 5V</text>
+  </g>
+  
+</svg>

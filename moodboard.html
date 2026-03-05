@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ARCHIVE — Ambient Intelligence Moodboard</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --fg: #d4d0c8;
+    --accent: #c8a96e;
+    --accent-dim: #8a7548;
+    --grid: rgba(200, 169, 110, 0.06);
+    --grid-strong: rgba(200, 169, 110, 0.12);
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --glow: rgba(200, 169, 110, 0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--mono);
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* Subtle grid overlay on entire page */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 40px);
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      repeating-linear-gradient(0deg, var(--grid-strong) 0px, var(--grid-strong) 1px, transparent 1px, transparent 200px),
+      repeating-linear-gradient(90deg, var(--grid-strong) 0px, var(--grid-strong) 1px, transparent 1px, transparent 200px);
+    pointer-events: none;
+    z-index: 1001;
+  }
+
+  /* Header */
+  .header {
+    padding: 60px 40px 40px;
+    border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    position: relative;
+  }
+
+  .header::after {
+    content: 'ARC-2026-AI-MOODBOARD';
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    opacity: 0.6;
+  }
+
+  .header h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(48px, 8vw, 96px);
+    letter-spacing: 0.15em;
+    color: var(--fg);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .header h1 span {
+    color: var(--accent);
+  }
+
+  .header .subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 24px;
+  }
+
+  .header .concept {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--fg);
+    opacity: 0.7;
+    max-width: 700px;
+    line-height: 1.6;
+  }
+
+  /* Section headers */
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 30px 40px 15px;
+    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before {
+    content: '◈';
+    font-size: 8px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200,169,110,0.2), transparent);
+  }
+
+  /* Mood Grid */
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2px;
+    padding: 2px 40px 40px;
+  }
+
+  .mood-item {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 1;
+    transition: all 0.4s ease;
+  }
+
+  .mood-item:hover {
+    z-index: 10;
+    box-shadow: 0 0 40px var(--glow);
+  }
+
+  .mood-item.wide { grid-column: span 4; aspect-ratio: 4/3; }
+  .mood-item.tall { grid-row: span 2; aspect-ratio: auto; }
+  .mood-item.medium { grid-column: span 3; }
+  .mood-item.large { grid-column: span 6; aspect-ratio: 16/10; }
+  .mood-item.full { grid-column: span 12; aspect-ratio: 21/7; }
+
+  .mood-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%) contrast(1.1);
+    transition: all 0.6s ease;
+  }
+
+  .mood-item:hover img {
+    filter: grayscale(0%) contrast(1.05);
+    transform: scale(1.03);
+  }
+
+  .mood-item .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(10,10,11,0.85) 100%);
+    pointer-events: none;
+  }
+
+  .mood-item .label {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    right: 12px;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .mood-item:hover .label {
+    opacity: 1;
+  }
+
+  .mood-item .ref-id {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 7px;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    opacity: 0.5;
+  }
+
+  /* Concept description blocks */
+  .concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    padding: 0 40px 40px;
+  }
+
+  .concept-card {
+    background: rgba(200, 169, 110, 0.03);
+    border: 1px solid rgba(200, 169, 110, 0.08);
+    padding: 30px;
+    transition: all 0.3s ease;
+  }
+
+  .concept-card:hover {
+    background: rgba(200, 169, 110, 0.06);
+    border-color: rgba(200, 169, 110, 0.15);
+  }
+
+  .concept-card .card-id {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .concept-card h3 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 22px;
+    color: var(--fg);
+    margin-bottom: 12px;
+  }
+
+  .concept-card p {
+    font-size: 11px;
+    line-height: 1.8;
+    color: var(--fg);
+    opacity: 0.6;
+  }
+
+  /* Color palette strip */
+  .palette-strip {
+    display: flex;
+    padding: 0 40px 40px;
+    gap: 2px;
+  }
+
+  .swatch {
+    flex: 1;
+    height: 80px;
+    position: relative;
+    transition: flex 0.4s ease;
+  }
+
+  .swatch:hover { flex: 2; }
+
+  .swatch .swatch-label {
+    position: absolute;
+    bottom: 8px;
+    left: 10px;
+    font-size: 7px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .swatch:hover .swatch-label { opacity: 1; }
+
+  .s1 { background: #1a1a1c; }
+  .s1 .swatch-label { color: #888; }
+  .s2 { background: #2a2520; }
+  .s2 .swatch-label { color: #c8a96e; }
+  .s3 { background: #3d3830; }
+  .s3 .swatch-label { color: #c8a96e; }
+  .s4 { background: #c8a96e; }
+  .s4 .swatch-label { color: #1a1a1c; }
+  .s5 { background: #d4d0c8; }
+  .s5 .swatch-label { color: #1a1a1c; }
+  .s6 { background: rgba(0,255,136,0.15); border: 1px solid rgba(0,255,136,0.3); }
+  .s6 .swatch-label { color: #00ff88; }
+  .s7 { background: rgba(255,100,50,0.12); border: 1px solid rgba(255,100,50,0.3); }
+  .s7 .swatch-label { color: #ff6432; }
+  .s8 { background: rgba(80,180,255,0.1); border: 1px solid rgba(80,180,255,0.25); }
+  .s8 .swatch-label { color: #50b4ff; }
+
+  /* Panel preview section */
+  .panel-preview {
+    padding: 0 40px 60px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .panel-diagram {
+    background: #0d0d0e;
+    border: 1px solid rgba(200, 169, 110, 0.1);
+    padding: 30px;
+    position: relative;
+  }
+
+  .panel-diagram svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .panel-notes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .panel-notes .note {
+    padding: 16px 20px;
+    border-left: 2px solid var(--accent);
+    background: rgba(200, 169, 110, 0.02);
+  }
+
+  .panel-notes .note h4 {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .panel-notes .note p {
+    font-size: 11px;
+    line-height: 1.7;
+    color: var(--fg);
+    opacity: 0.6;
+  }
+
+  /* Typography specimens */
+  .type-specimens {
+    padding: 0 40px 60px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .type-block {
+    background: rgba(200, 169, 110, 0.02);
+    padding: 40px 30px;
+    border: 1px solid rgba(200, 169, 110, 0.05);
+  }
+
+  .type-block .label-sm {
+    font-size: 8px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+
+  .type-block .specimen-mono {
+    font-family: var(--mono);
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--fg);
+    line-height: 2.2;
+  }
+
+  .type-block .specimen-serif {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--fg);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px;
+    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .left {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    opacity: 0.5;
+  }
+
+  .footer .right {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--accent-dim);
+    opacity: 0.3;
+  }
+
+  /* Scanline animation */
+  @keyframes scanline {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--glow), transparent);
+    z-index: 999;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @media (max-width: 900px) {
+    .mood-grid { grid-template-columns: repeat(6, 1fr); }
+    .mood-item.wide { grid-column: span 3; }
+    .mood-item.large { grid-column: span 6; }
+    .mood-item.full { grid-column: span 6; }
+    .mood-item.medium { grid-column: span 2; }
+    .concept-grid { grid-template-columns: 1fr; }
+    .panel-preview { grid-template-columns: 1fr; }
+    .type-specimens { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<div class="header">
+  <div class="subtitle">Currents × Relay — Ambient Intelligence — Design System Moodboard</div>
+  <h1>THE <span>ARCHIVE</span></h1>
+  <p class="concept">
+    Recovered specimens from an unknown research station. Someone was studying these systems, 
+    cataloging them, connecting them. Then they disappeared. We found the lab.
+  </p>
+</div>
+
+<!-- TONAL REFERENCES -->
+<div class="section-label">01 — Tonal References</div>
+<div class="mood-grid">
+  <div class="mood-item wide" style="background: linear-gradient(135deg, #0a0a0b, #1a1510); display:flex; align-items:center; justify-content:center;">
+    <div style="text-align:center; padding: 20px;">
+      <div style="font-family: var(--serif); font-size: 28px; font-weight: 300; font-style: italic; color: var(--fg); opacity: 0.8; line-height:1.4;">Mysterious.<br>Clinical.<br>Beautiful.</div>
+    </div>
+    <div class="ref-id">TONE-001</div>
+  </div>
+  <div class="mood-item wide" style="background: linear-gradient(180deg, #111 0%, #0d1510 50%, #0a0a0b 100%); display:flex; align-items:center; justify-content:center;">
+    <div style="text-align:center;">
+      <div style="font-size: 9px; letter-spacing: 4px; color: var(--accent); margin-bottom: 12px;">REFERENCE: ANNIHILATION</div>
+      <div style="font-size: 11px; color: var(--fg); opacity: 0.5; max-width: 250px; line-height: 1.7;">Biological systems merged with unknown technology. The shimmer — an iridescent boundary where systems communicate in ways we don't fully understand.</div>
+    </div>
+    <div class="ref-id">TONE-002</div>
+  </div>
+  <div class="mood-item wide" style="background: linear-gradient(180deg, #12141a, #0a0a0b); display:flex; align-items:center; justify-content:center;">
+    <div style="text-align:center;">
+      <div style="font-size: 9px; letter-spacing: 4px; color: var(--accent); margin-bottom: 12px;">REFERENCE: SVALBARD SEED VAULT</div>
+      <div style="font-size: 11px; color: var(--fg); opacity: 0.5; max-width: 250px; line-height: 1.7;">Preserving something essential in austere, monumental architecture. Utilitarian beauty. The gravity of safekeeping knowledge.</div>
+    </div>
+    <div class="ref-id">TONE-003</div>
+  </div>
+</div>
+
+<!-- MATERIAL PALETTE -->
+<div class="section-label">02 — Material + Color Palette</div>
+<div class="palette-strip">
+  <div class="swatch s1"><div class="swatch-label">Void Black<br>#1a1a1c</div></div>
+  <div class="swatch s2"><div class="swatch-label">Amber Smoke<br>#2a2520</div></div>
+  <div class="swatch s3"><div class="swatch-label">Warm Gray<br>#3d3830</div></div>
+  <div class="swatch s4"><div class="swatch-label">Brass Accent<br>#c8a96e</div></div>
+  <div class="swatch s5"><div class="swatch-label">Archive Bone<br>#d4d0c8</div></div>
+  <div class="swatch s6"><div class="swatch-label">Edge Glow: Vert<br>#00ff88</div></div>
+  <div class="swatch s7"><div class="swatch-label">Edge Glow: Amber<br>#ff6432</div></div>
+  <div class="swatch s8"><div class="swatch-label">Edge Glow: Cyan<br>#50b4ff</div></div>
+</div>
+
+<!-- DESIGN PRINCIPLES -->
+<div class="section-label">03 — Design Principles</div>
+<div class="concept-grid">
+  <div class="concept-card">
+    <div class="card-id">PRINCIPLE 01</div>
+    <h3>Specimen, Not Exhibit</h3>
+    <p>Each artwork is treated as a recovered artifact under study — not a display piece. The mounting system is the research apparatus. Labels are field notes. The gallery is the lab.</p>
+  </div>
+  <div class="concept-card">
+    <div class="card-id">PRINCIPLE 02</div>
+    <h3>Uniform Container, Unique Contents</h3>
+    <p>The acrylic carriers provide visual consistency — same materials, same grid, same labeling system. But what's mounted on them is wildly diverse. The contrast is the point.</p>
+  </div>
+  <div class="concept-card">
+    <div class="card-id">PRINCIPLE 03</div>
+    <h3>Living Data</h3>
+    <p>OLED screens on each panel show real-time Maestra network activity. The specimens aren't static — they're communicating. The archive is alive and we're watching it happen.</p>
+  </div>
+</div>
+
+<!-- PANEL SYSTEM -->
+<div class="section-label">04 — Panel Assembly System
+  <a href="laser-files.html" style="font-size: 9px; letter-spacing: 2px; color: var(--accent); text-decoration: none; border: 1px solid rgba(200,169,110,0.2); padding: 4px 12px; margin-left: auto; transition: all 0.3s ease; flex: none;" onmouseover="this.style.background='rgba(200,169,110,0.08)'" onmouseout="this.style.background='transparent'">View Laser Cut Files →</a>
+</div>
+<div class="panel-preview">
+  <div class="panel-diagram">
+    <!-- Simplified panel cross-section diagram -->
+    <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+      <!-- Background -->
+      <rect width="400" height="500" fill="#0d0d0e"/>
+      
+      <!-- Title -->
+      <text x="20" y="30" fill="#c8a96e" font-family="monospace" font-size="9" letter-spacing="3">PANEL ASSEMBLY — EXPLODED VIEW</text>
+      
+      <!-- Layer 1: Back plate (smoked acrylic) -->
+      <g transform="translate(50, 60)">
+        <rect x="0" y="0" width="200" height="280" rx="4" fill="none" stroke="#8a7548" stroke-width="0.5" opacity="0.6"/>
+        <!-- Grid pattern -->
+        <g opacity="0.15" stroke="#c8a96e" stroke-width="0.3">
+          <line x1="0" y1="0" x2="0" y2="280"/>
+          <line x1="40" y1="0" x2="40" y2="280"/>
+          <line x1="80" y1="0" x2="80" y2="280"/>
+          <line x1="120" y1="0" x2="120" y2="280"/>
+          <line x1="160" y1="0" x2="160" y2="280"/>
+          <line x1="200" y1="0" x2="200" y2="280"/>
+          <line x1="0" y1="0" x2="200" y2="0"/>
+          <line x1="0" y1="56" x2="200" y2="56"/>
+          <line x1="0" y1="112" x2="200" y2="112"/>
+          <line x1="0" y1="168" x2="200" y2="168"/>
+          <line x1="0" y1="224" x2="200" y2="224"/>
+          <line x1="0" y1="280" x2="200" y2="280"/>
+        </g>
+        <!-- Topo lines -->
+        <ellipse cx="130" cy="140" rx="60" ry="35" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.1" transform="rotate(-15 130 140)"/>
+        <ellipse cx="130" cy="140" rx="40" ry="22" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.1" transform="rotate(-15 130 140)"/>
+        <!-- Label -->
+        <text x="5" y="15" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.8">ARC-2026-AI-___</text>
+        <!-- Specimen text -->
+        <text x="5" y="270" fill="#c8a96e" font-family="monospace" font-size="5" opacity="0.5">MAESTRA NETWORK | NODE: ___</text>
+      </g>
+      <text x="270" y="200" fill="#8a7548" font-family="monospace" font-size="7" opacity="0.7">← BACKPLATE</text>
+      <text x="270" y="212" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">Smoked 3mm acrylic</text>
+      <text x="270" y="222" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">Laser etched grid +</text>
+      <text x="270" y="232" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">topo + specimen ID</text>
+      
+      <!-- Standoff indicators -->
+      <g stroke="#c8a96e" stroke-width="1" opacity="0.4">
+        <line x1="80" y1="345" x2="80" y2="355" stroke-dasharray="2,2"/>
+        <line x1="150" y1="345" x2="150" y2="355" stroke-dasharray="2,2"/>
+        <line x1="220" y1="345" x2="220" y2="355" stroke-dasharray="2,2"/>
+      </g>
+      <text x="270" y="352" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">15-20mm brass standoffs</text>
+      
+      <!-- Layer 2: Mounting layer -->
+      <g transform="translate(50, 360)">
+        <rect x="0" y="0" width="200" height="60" rx="3" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.4"/>
+        <!-- Device outlines -->
+        <rect x="15" y="10" width="55" height="35" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
+        <rect x="85" y="8" width="45" height="30" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
+        <rect x="140" y="12" width="50" height="38" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
+        <!-- Cable slots -->
+        <rect x="5" y="20" width="3" height="25" rx="1" fill="#d4d0c8" opacity="0.1"/>
+        <rect x="192" y="20" width="3" height="25" rx="1" fill="#d4d0c8" opacity="0.1"/>
+      </g>
+      <text x="270" y="385" fill="#d4d0c8" font-family="monospace" font-size="7" opacity="0.7">← MOUNT LAYER</text>
+      <text x="270" y="397" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">Clear/frosted 3mm</text>
+      <text x="270" y="407" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">Custom device cutouts</text>
+      
+      <!-- Layer 3: Info strip -->
+      <g transform="translate(50, 440)">
+        <rect x="0" y="0" width="200" height="30" rx="2" fill="rgba(200,169,110,0.05)" stroke="#c8a96e" stroke-width="0.5" opacity="0.5"/>
+        <!-- OLED window -->
+        <rect x="8" y="6" width="24" height="13" rx="1" fill="none" stroke="#00ff88" stroke-width="0.5" opacity="0.6"/>
+        <text x="12" y="15" fill="#00ff88" font-family="monospace" font-size="4" opacity="0.6">OLED</text>
+        <!-- Text area -->
+        <text x="40" y="12" fill="#c8a96e" font-family="monospace" font-size="4" opacity="0.5">SPECIMEN: _______________</text>
+        <text x="40" y="19" fill="#c8a96e" font-family="monospace" font-size="3.5" opacity="0.3">ARTIST: ___________ | NODE: AI-___</text>
+        <!-- Edge glow indicator -->
+        <line x1="0" y1="29" x2="200" y2="29" stroke="#ff6432" stroke-width="1.5" opacity="0.3"/>
+      </g>
+      <text x="270" y="455" fill="#c8a96e" font-family="monospace" font-size="7" opacity="0.7">← INFO STRIP</text>
+      <text x="270" y="467" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">Black 3mm acrylic</text>
+      <text x="270" y="477" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">OLED + edge-lit accent</text>
+    </svg>
+  </div>
+  
+  <div class="panel-notes">
+    <div class="note">
+      <h4>Backplate — Smoked Acrylic</h4>
+      <p>3mm tinted acrylic (dark gray or amber). Laser-etched alignment grid, topographic contours, and specimen catalog ID. The "research document" that everything sits on.</p>
+    </div>
+    <div class="note">
+      <h4>Mounting Layer — Clear/Frosted</h4>
+      <p>3mm clear or frosted acrylic with custom cutouts per artist's devices. Brass hex standoffs create 15-20mm air gap for cooling and cable routing. Devices float above the grid.</p>
+    </div>
+    <div class="note">
+      <h4>Info Strip — Black Acrylic</h4>
+      <p>Specimen catalog entry with OLED screen showing live Maestra network data. Edge-lit with fluorescent acrylic accent strip — each artist gets a unique glow color.</p>
+    </div>
+    <div class="note">
+      <h4>Cable Management</h4>
+      <p>Braided mesh sleeving in matte black. Heat-shrink labels at each terminus in matching monospace font. Cables route between layers through dedicated slots.</p>
+    </div>
+    <div class="note">
+      <h4>Optional: Thermal Unit</h4>
+      <p>40mm Noctua fan bracket for heat-generating devices. Mounts below panel. The layer gap creates a natural convection chimney — fan assists when needed.</p>
+    </div>
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="section-label">05 — Typography System</div>
+<div class="type-specimens">
+  <div class="type-block">
+    <div class="label-sm">Catalog / Technical — IBM Plex Mono</div>
+    <div class="specimen-mono">
+      ARC-2026-AI-007<br>
+      SPECIMEN: Resonance Field<br>
+      ARTIST: ____________<br>
+      NODE ID: AI-007<br>
+      STATUS: ▮▮▮▯▯ ACTIVE<br>
+      FREQ: ADAPTIVE<br>
+      PROTOCOL: MQTT/OSC
+    </div>
+  </div>
+  <div class="type-block">
+    <div class="label-sm">Display / Titles — Cormorant Garamond</div>
+    <div class="specimen-serif">
+      The Archive<br>
+      Ambient Intelligence<br>
+      <span style="font-size: 20px; opacity: 0.5;">Recovered specimens from an unknown research station</span>
+    </div>
+  </div>
+</div>
+
+<!-- ETCHING DETAIL -->
+<div class="section-label">06 — Specimen Label Detail</div>
+<div style="padding: 0 40px 60px;">
+  <div style="background: #111; border: 1px solid rgba(200,169,110,0.1); padding: 40px; max-width: 700px;">
+    <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
+      <rect width="600" height="180" fill="#111"/>
+      
+      <!-- Grid background -->
+      <g opacity="0.05" stroke="#c8a96e" stroke-width="0.5">
+        <line x1="0" y1="0" x2="0" y2="180"/>
+        <line x1="30" y1="0" x2="30" y2="180"/>
+        <line x1="60" y1="0" x2="60" y2="180"/>
+        <line x1="90" y1="0" x2="90" y2="180"/>
+        <line x1="120" y1="0" x2="120" y2="180"/>
+        <line x1="150" y1="0" x2="150" y2="180"/>
+        <line x1="180" y1="0" x2="180" y2="180"/>
+        <line x1="210" y1="0" x2="210" y2="180"/>
+        <line x1="0" y1="30" x2="600" y2="30"/>
+        <line x1="0" y1="60" x2="600" y2="60"/>
+        <line x1="0" y1="90" x2="600" y2="90"/>
+        <line x1="0" y1="120" x2="600" y2="120"/>
+        <line x1="0" y1="150" x2="600" y2="150"/>
+      </g>
+      
+      <!-- Registration marks -->
+      <line x1="10" y1="10" x2="25" y2="10" stroke="#c8a96e" stroke-width="0.5" opacity="0.4"/>
+      <line x1="10" y1="10" x2="10" y2="25" stroke="#c8a96e" stroke-width="0.5" opacity="0.4"/>
+      
+      <!-- Classification header -->
+      <text x="20" y="45" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="4" opacity="0.5">AMBIENT INTELLIGENCE RESEARCH ARCHIVE</text>
+      <line x1="20" y1="52" x2="420" y2="52" stroke="#c8a96e" stroke-width="0.3" opacity="0.3"/>
+      
+      <!-- Main specimen ID -->
+      <text x="20" y="80" fill="#d4d0c8" font-family="'IBM Plex Mono', monospace" font-size="22" letter-spacing="2">ARC-2026-AI-007</text>
+      
+      <!-- Metadata -->
+      <text x="20" y="105" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="1" opacity="0.7">SPECIMEN: Resonance Field</text>
+      <text x="20" y="120" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="1" opacity="0.5">ARTIST: Jane Doe | MEDIUM: Sound/Data</text>
+      <text x="20" y="135" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="10" letter-spacing="1" opacity="0.5">NODE: AI-007 | FREQ: ADAPTIVE | PROTOCOL: MQTT</text>
+      
+      <!-- Status bar -->
+      <text x="20" y="158" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="8" letter-spacing="2" opacity="0.3">CATALOGED: 2026.04 | CLASS: ΣΩ-ACTIVE | STATUS: ▮▮▮▯▯</text>
+      <line x1="20" y1="165" x2="420" y2="165" stroke="#c8a96e" stroke-width="0.3" opacity="0.2"/>
+      
+      <!-- Decorative glyphs -->
+      <text x="440" y="75" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="18" opacity="0.15">◈ ◉ ◎</text>
+      
+      <!-- Signal indicator -->
+      <g transform="translate(440, 95)">
+        <circle cx="10" cy="10" r="5" fill="none" stroke="#c8a96e" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="10" cy="10" r="3" fill="#c8a96e" opacity="0.2"/>
+        <circle cx="30" cy="10" r="5" fill="none" stroke="#c8a96e" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="50" cy="10" r="5" fill="none" stroke="#c8a96e" stroke-width="0.5" opacity="0.3"/>
+        <circle cx="50" cy="10" r="3" fill="#c8a96e" opacity="0.2"/>
+      </g>
+      
+      <!-- Micro footer -->
+      <text x="20" y="175" fill="#c8a96e" font-family="'IBM Plex Mono', monospace" font-size="6" letter-spacing="1" opacity="0.2">CURRENTS×RELAY // MAESTRA NETWORK v1.0 // SANTA FE NM 2026</text>
+    </svg>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="left">CURRENTS × RELAY — AMBIENT INTELLIGENCE — APRIL 2026</div>
+  <div class="right">MOODBOARD v1.0 — THE ARCHIVE — DESIGN SYSTEM</div>
+</div>
+
+</body>
+</html>

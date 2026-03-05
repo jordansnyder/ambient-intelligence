@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>THE ARCHIVE — Laser Cut Files</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0b;
+    --fg: #d4d0c8;
+    --accent: #c8a96e;
+    --accent-dim: #8a7548;
+    --grid: rgba(200, 169, 110, 0.06);
+    --grid-strong: rgba(200, 169, 110, 0.12);
+    --mono: 'IBM Plex Mono', monospace;
+    --serif: 'Cormorant Garamond', serif;
+    --glow: rgba(200, 169, 110, 0.15);
+    --cut: #FF4444;
+    --etch-deep: #6688FF;
+    --etch-light: #44BB66;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--mono);
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 40px),
+      repeating-linear-gradient(90deg, var(--grid) 0px, var(--grid) 1px, transparent 1px, transparent 40px);
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      repeating-linear-gradient(0deg, var(--grid-strong) 0px, var(--grid-strong) 1px, transparent 1px, transparent 200px),
+      repeating-linear-gradient(90deg, var(--grid-strong) 0px, var(--grid-strong) 1px, transparent 1px, transparent 200px);
+    pointer-events: none;
+    z-index: 1001;
+  }
+
+  .scanline {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--glow), transparent);
+    z-index: 999;
+    animation: scanline 8s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100vh); }
+    100% { transform: translateY(100vh); }
+  }
+
+  /* Header */
+  .header {
+    padding: 40px 40px 30px;
+    border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .header::after {
+    content: 'ARC-2026-AI-LASERCUT';
+    position: absolute;
+    top: 15px;
+    right: 40px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    opacity: 0.6;
+  }
+
+  .header h1 {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 56px);
+    letter-spacing: 0.15em;
+    color: var(--fg);
+    line-height: 1;
+  }
+
+  .header h1 span { color: var(--accent); }
+
+  .header .subtitle {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    margin-bottom: 6px;
+  }
+
+  .nav-link {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid rgba(200, 169, 110, 0.2);
+    padding: 8px 16px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background: rgba(200, 169, 110, 0.08);
+    border-color: rgba(200, 169, 110, 0.4);
+  }
+
+  /* Section headers */
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding: 30px 40px 15px;
+    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::before { content: '◈'; font-size: 8px; }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(200,169,110,0.2), transparent);
+  }
+
+  /* Legend */
+  .legend {
+    display: flex;
+    gap: 24px;
+    padding: 10px 40px 20px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--fg);
+    opacity: 0.6;
+  }
+
+  .legend-swatch {
+    width: 20px;
+    height: 3px;
+  }
+
+  /* File cards */
+  .file-grid {
+    padding: 0 40px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .file-card {
+    background: #0d0d0e;
+    border: 1px solid rgba(200, 169, 110, 0.1);
+    transition: border-color 0.3s ease;
+  }
+
+  .file-card:hover {
+    border-color: rgba(200, 169, 110, 0.2);
+  }
+
+  .file-card-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(200, 169, 110, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .file-card-title {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--fg);
+  }
+
+  .file-card-meta {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    opacity: 0.7;
+  }
+
+  .file-card-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .layer-toggle {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .layer-toggle.active { opacity: 1; }
+  .layer-toggle:not(.active) { opacity: 0.3; }
+
+  .layer-toggle.cut {
+    color: var(--cut);
+    border-color: var(--cut);
+  }
+  .layer-toggle.cut.active { background: rgba(255, 68, 68, 0.1); }
+
+  .layer-toggle.etch-deep {
+    color: var(--etch-deep);
+    border-color: var(--etch-deep);
+  }
+  .layer-toggle.etch-deep.active { background: rgba(102, 136, 255, 0.1); }
+
+  .layer-toggle.etch-light {
+    color: var(--etch-light);
+    border-color: var(--etch-light);
+  }
+  .layer-toggle.etch-light.active { background: rgba(68, 187, 102, 0.1); }
+
+  .download-btn {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border: 1px solid rgba(200, 169, 110, 0.3);
+    background: transparent;
+    color: var(--accent);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .download-btn:hover {
+    background: rgba(200, 169, 110, 0.08);
+    border-color: rgba(200, 169, 110, 0.5);
+  }
+
+  .svg-viewport {
+    padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 300px;
+    background:
+      repeating-linear-gradient(0deg, rgba(200,169,110,0.02) 0px, rgba(200,169,110,0.02) 1px, transparent 1px, transparent 20px),
+      repeating-linear-gradient(90deg, rgba(200,169,110,0.02) 0px, rgba(200,169,110,0.02) 1px, transparent 1px, transparent 20px);
+    overflow: auto;
+    position: relative;
+  }
+
+  .svg-viewport svg {
+    max-width: 100%;
+    height: auto;
+    max-height: 600px;
+  }
+
+  .file-card-specs {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(200, 169, 110, 0.08);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+  }
+
+  .spec {
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: var(--accent-dim);
+    opacity: 0.7;
+  }
+
+  .spec strong {
+    color: var(--fg);
+    font-weight: 400;
+    opacity: 1;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 40px;
+    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer .left {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--accent-dim);
+    opacity: 0.5;
+  }
+
+  .footer .right {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--accent-dim);
+    opacity: 0.3;
+  }
+
+  @media (max-width: 700px) {
+    .header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .file-card-header { flex-direction: column; align-items: flex-start; }
+    .file-card-specs { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<div class="header">
+  <div>
+    <div class="subtitle">Currents × Relay — Ambient Intelligence — Fabrication Files</div>
+    <h1>LASER <span>CUT</span> FILES</h1>
+  </div>
+  <a href="moodboard.html" class="nav-link">← Moodboard</a>
+</div>
+
+<div class="section-label">Layer Legend</div>
+<div class="legend">
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: var(--cut);"></div>
+    Cut — Through-cut
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: var(--etch-deep);"></div>
+    Etch Deep — Deep engrave
+  </div>
+  <div class="legend-item">
+    <div class="legend-swatch" style="background: var(--etch-light);"></div>
+    Etch Light — Raster etch / Reference
+  </div>
+</div>
+
+<div class="section-label">01 — Panel Files</div>
+
+<div class="file-grid">
+
+  <!-- Backplate -->
+  <div class="file-card" id="card-backplate">
+    <div class="file-card-header">
+      <div>
+        <div class="file-card-title">panel-standard-12x16-backplate.svg</div>
+        <div class="file-card-meta">BACKPLATE — SMOKED 3MM ACRYLIC</div>
+      </div>
+      <div class="file-card-controls">
+        <button class="layer-toggle cut active" onclick="toggleLayer('backplate','CUT',this)">Cut</button>
+        <button class="layer-toggle etch-deep active" onclick="toggleLayer('backplate','ETCH-DEEP',this)">Etch Deep</button>
+        <button class="layer-toggle etch-light active" onclick="toggleLayer('backplate','ETCH-LIGHT',this)">Etch Light</button>
+        <a href="panel-standard-12x16-backplate.svg" download class="download-btn">Download SVG</a>
+      </div>
+    </div>
+    <div class="svg-viewport" id="viewport-backplate"></div>
+    <div class="file-card-specs">
+      <div class="spec"><strong>Dimensions:</strong> 304.8 × 406.4 mm (12" × 16")</div>
+      <div class="spec"><strong>Material:</strong> Smoked/tinted 3mm acrylic</div>
+      <div class="spec"><strong>Mounting:</strong> M4 corner holes, M3 standoff grid</div>
+      <div class="spec"><strong>Features:</strong> Alignment grid, topo contours, specimen ID</div>
+    </div>
+  </div>
+
+  <!-- Mounting Layer -->
+  <div class="file-card" id="card-mounting">
+    <div class="file-card-header">
+      <div>
+        <div class="file-card-title">panel-standard-12x16-mounting-layer.svg</div>
+        <div class="file-card-meta">DEVICE MOUNTING LAYER — CLEAR/FROSTED 3MM ACRYLIC</div>
+      </div>
+      <div class="file-card-controls">
+        <button class="layer-toggle cut active" onclick="toggleLayer('mounting','CUT',this)">Cut</button>
+        <button class="layer-toggle etch-light active" onclick="toggleLayer('mounting','ETCH-REF',this)">Reference</button>
+        <a href="panel-standard-12x16-mounting-layer.svg" download class="download-btn">Download SVG</a>
+      </div>
+    </div>
+    <div class="svg-viewport" id="viewport-mounting"></div>
+    <div class="file-card-specs">
+      <div class="spec"><strong>Dimensions:</strong> 304.8 × 406.4 mm (12" × 16")</div>
+      <div class="spec"><strong>Material:</strong> Clear or frosted 3mm acrylic</div>
+      <div class="spec"><strong>Devices:</strong> RPi 4, Arduino Uno, Generic SM, Audio I/F</div>
+      <div class="spec"><strong>Features:</strong> Cable channels, device cutouts, standoff grid</div>
+    </div>
+  </div>
+
+  <!-- Fan Bracket -->
+  <div class="file-card" id="card-fan">
+    <div class="file-card-header">
+      <div>
+        <div class="file-card-title">panel-fan-bracket.svg</div>
+        <div class="file-card-meta">THERMAL MANAGEMENT UNIT — CLEAR 3MM ACRYLIC</div>
+      </div>
+      <div class="file-card-controls">
+        <button class="layer-toggle cut active" onclick="toggleLayer('fan','CUT',this)">Cut</button>
+        <button class="layer-toggle etch-deep active" onclick="toggleLayer('fan','ETCH-DEEP',this)">Etch Deep</button>
+        <a href="panel-fan-bracket.svg" download class="download-btn">Download SVG</a>
+      </div>
+    </div>
+    <div class="svg-viewport" id="viewport-fan"></div>
+    <div class="file-card-specs">
+      <div class="spec"><strong>Dimensions:</strong> 80 × 55 mm</div>
+      <div class="spec"><strong>Material:</strong> Clear 3mm acrylic</div>
+      <div class="spec"><strong>Fan:</strong> 40mm Noctua (5V)</div>
+      <div class="spec"><strong>Mounting:</strong> M3 fan holes, M3 panel attachment</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="left">CURRENTS × RELAY — AMBIENT INTELLIGENCE — APRIL 2026</div>
+  <div class="right">FABRICATION FILES v1.0 — THE ARCHIVE</div>
+</div>
+
+<script>
+  const files = {
+    backplate: 'panel-standard-12x16-backplate.svg',
+    mounting: 'panel-standard-12x16-mounting-layer.svg',
+    fan: 'panel-fan-bracket.svg'
+  };
+
+  // Load SVGs inline for layer control
+  Object.entries(files).forEach(([key, file]) => {
+    fetch(file)
+      .then(r => r.text())
+      .then(svg => {
+        const viewport = document.getElementById('viewport-' + key);
+        viewport.innerHTML = svg;
+        // Style the embedded SVG
+        const svgEl = viewport.querySelector('svg');
+        if (svgEl) {
+          svgEl.style.maxWidth = '100%';
+          svgEl.style.height = 'auto';
+          svgEl.style.maxHeight = '600px';
+          // Make background dark to match theme
+          svgEl.style.background = 'transparent';
+        }
+      });
+  });
+
+  function toggleLayer(fileKey, layerId, btn) {
+    const viewport = document.getElementById('viewport-' + fileKey);
+    const layer = viewport.querySelector('#' + layerId);
+    if (!layer) {
+      // Try case-insensitive search for reference layers
+      const allGs = viewport.querySelectorAll('g[fill="#00AA00"], g[id]');
+      for (const g of allGs) {
+        if (g.id === layerId || (layerId === 'ETCH-REF' && g.getAttribute('fill') === '#00AA00')) {
+          g.style.display = g.style.display === 'none' ? '' : 'none';
+          btn.classList.toggle('active');
+          return;
+        }
+      }
+      return;
+    }
+    layer.style.display = layer.style.display === 'none' ? '' : 'none';
+    btn.classList.toggle('active');
+  }
+</script>
+
+</body>
+</html>
