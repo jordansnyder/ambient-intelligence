@@ -7,18 +7,21 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a0a0b;
-    --fg: #d4d0c8;
-    --accent: #c8a96e;
-    --accent-dim: #8a7548;
-    --grid: rgba(200, 169, 110, 0.06);
-    --grid-strong: rgba(200, 169, 110, 0.12);
+    --bg: #f5f0e8;
+    --bg-surface: #ece6d9;
+    --fg: #2a2520;
+    --fg-secondary: #5a5248;
+    --accent: #8a6d3b;
+    --accent-dim: #b8a07a;
+    --border: rgba(120, 90, 50, 0.15);
+    --border-strong: rgba(120, 90, 50, 0.25);
+    --grid: rgba(120, 90, 50, 0.04);
+    --grid-strong: rgba(120, 90, 50, 0.08);
     --mono: 'IBM Plex Mono', monospace;
     --serif: 'Cormorant Garamond', serif;
-    --glow: rgba(200, 169, 110, 0.15);
-    --cut: #FF4444;
-    --etch-deep: #6688FF;
-    --etch-light: #44BB66;
+    --cut: #cc2200;
+    --etch-deep: #2244aa;
+    --etch-light: #338844;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -31,6 +34,7 @@
     cursor: crosshair;
   }
 
+  /* Subtle pencil-line grid */
   body::before {
     content: '';
     position: fixed;
@@ -53,15 +57,16 @@
     z-index: 1001;
   }
 
+  /* Warm scanline sweep */
   .scanline {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: linear-gradient(to right, transparent, var(--glow), transparent);
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(138, 109, 59, 0.12), transparent);
     z-index: 999;
-    animation: scanline 8s linear infinite;
+    animation: scanline 10s linear infinite;
     pointer-events: none;
   }
 
@@ -73,7 +78,7 @@
   /* Header */
   .header {
     padding: 40px 40px 30px;
-    border-bottom: 1px solid rgba(200, 169, 110, 0.15);
+    border-bottom: 1px solid var(--border);
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -88,7 +93,7 @@
     font-size: 10px;
     letter-spacing: 3px;
     color: var(--accent-dim);
-    opacity: 0.6;
+    opacity: 0.5;
   }
 
   .header h1 {
@@ -106,7 +111,7 @@
     font-size: 10px;
     letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--accent-dim);
+    color: var(--accent);
     margin-bottom: 6px;
   }
 
@@ -116,15 +121,15 @@
     text-transform: uppercase;
     color: var(--accent);
     text-decoration: none;
-    border: 1px solid rgba(200, 169, 110, 0.2);
+    border: 1px solid var(--border);
     padding: 8px 16px;
     transition: all 0.3s ease;
     white-space: nowrap;
   }
 
   .nav-link:hover {
-    background: rgba(200, 169, 110, 0.08);
-    border-color: rgba(200, 169, 110, 0.4);
+    background: rgba(138, 109, 59, 0.08);
+    border-color: var(--border-strong);
   }
 
   /* Section headers */
@@ -134,7 +139,7 @@
     text-transform: uppercase;
     color: var(--accent);
     padding: 30px 40px 15px;
-    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    border-top: 1px solid var(--border);
     display: flex;
     align-items: center;
     gap: 12px;
@@ -146,7 +151,7 @@
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(to right, rgba(200,169,110,0.2), transparent);
+    background: linear-gradient(to right, var(--border), transparent);
   }
 
   /* Legend */
@@ -164,8 +169,7 @@
     font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: var(--fg);
-    opacity: 0.6;
+    color: var(--fg-secondary);
   }
 
   .legend-swatch {
@@ -182,18 +186,20 @@
   }
 
   .file-card {
-    background: #0d0d0e;
-    border: 1px solid rgba(200, 169, 110, 0.1);
-    transition: border-color 0.3s ease;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 3px rgba(80, 60, 30, 0.06);
+    transition: all 0.3s ease;
   }
 
   .file-card:hover {
-    border-color: rgba(200, 169, 110, 0.2);
+    border-color: var(--border-strong);
+    box-shadow: 0 2px 8px rgba(80, 60, 30, 0.1);
   }
 
   .file-card-header {
     padding: 20px 24px;
-    border-bottom: 1px solid rgba(200, 169, 110, 0.08);
+    border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -210,7 +216,7 @@
   .file-card-meta {
     font-size: 9px;
     letter-spacing: 1px;
-    color: var(--accent-dim);
+    color: var(--accent);
     opacity: 0.7;
   }
 
@@ -239,19 +245,19 @@
     color: var(--cut);
     border-color: var(--cut);
   }
-  .layer-toggle.cut.active { background: rgba(255, 68, 68, 0.1); }
+  .layer-toggle.cut.active { background: rgba(204, 34, 0, 0.06); }
 
   .layer-toggle.etch-deep {
     color: var(--etch-deep);
     border-color: var(--etch-deep);
   }
-  .layer-toggle.etch-deep.active { background: rgba(102, 136, 255, 0.1); }
+  .layer-toggle.etch-deep.active { background: rgba(34, 68, 170, 0.06); }
 
   .layer-toggle.etch-light {
     color: var(--etch-light);
     border-color: var(--etch-light);
   }
-  .layer-toggle.etch-light.active { background: rgba(68, 187, 102, 0.1); }
+  .layer-toggle.etch-light.active { background: rgba(51, 136, 68, 0.06); }
 
   .download-btn {
     font-family: var(--mono);
@@ -259,7 +265,7 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     padding: 5px 12px;
-    border: 1px solid rgba(200, 169, 110, 0.3);
+    border: 1px solid var(--border-strong);
     background: transparent;
     color: var(--accent);
     cursor: pointer;
@@ -268,8 +274,8 @@
   }
 
   .download-btn:hover {
-    background: rgba(200, 169, 110, 0.08);
-    border-color: rgba(200, 169, 110, 0.5);
+    background: rgba(138, 109, 59, 0.08);
+    border-color: var(--accent);
   }
 
   .svg-viewport {
@@ -278,7 +284,9 @@
     justify-content: center;
     align-items: center;
     min-height: 300px;
-    background: #f0ede8;
+    background: #faf8f4;
+    border-top: 1px solid rgba(120, 90, 50, 0.06);
+    border-bottom: 1px solid rgba(120, 90, 50, 0.06);
     overflow: auto;
     position: relative;
     z-index: 1002;
@@ -292,7 +300,7 @@
 
   .file-card-specs {
     padding: 16px 24px;
-    border-top: 1px solid rgba(200, 169, 110, 0.08);
+    border-top: 1px solid var(--border);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 12px;
@@ -301,20 +309,18 @@
   .spec {
     font-size: 9px;
     letter-spacing: 1px;
-    color: var(--accent-dim);
-    opacity: 0.7;
+    color: var(--fg-secondary);
   }
 
   .spec strong {
     color: var(--fg);
-    font-weight: 400;
-    opacity: 1;
+    font-weight: 500;
   }
 
   /* Footer */
   .footer {
     padding: 40px;
-    border-top: 1px solid rgba(200, 169, 110, 0.1);
+    border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -324,14 +330,13 @@
     font-size: 9px;
     letter-spacing: 3px;
     color: var(--accent-dim);
-    opacity: 0.5;
   }
 
   .footer .right {
     font-size: 8px;
     letter-spacing: 2px;
     color: var(--accent-dim);
-    opacity: 0.3;
+    opacity: 0.5;
   }
 
   @media (max-width: 700px) {
@@ -461,29 +466,28 @@
       .then(svg => {
         const viewport = document.getElementById('viewport-' + key);
         viewport.innerHTML = svg;
-        // Style the embedded SVG
         const svgEl = viewport.querySelector('svg');
         if (svgEl) {
           svgEl.style.maxWidth = '100%';
           svgEl.style.height = 'auto';
           svgEl.style.maxHeight = '600px';
           svgEl.style.background = 'transparent';
-          // Remap colors for light viewport background
-          svgEl.querySelectorAll('[stroke="#FF0000"]').forEach(el => el.setAttribute('stroke', '#cc0000'));
-          svgEl.querySelectorAll('[stroke="#0000FF"]').forEach(el => el.setAttribute('stroke', '#2244cc'));
-          svgEl.querySelectorAll('[fill="#0000FF"]').forEach(el => el.setAttribute('fill', '#2244cc'));
-          svgEl.querySelectorAll('[stroke="#00AA00"]').forEach(el => el.setAttribute('stroke', '#228833'));
-          svgEl.querySelectorAll('[fill="#00AA00"]').forEach(el => el.setAttribute('fill', '#228833'));
-          svgEl.querySelectorAll('[stroke="#AAAAAA"]').forEach(el => el.setAttribute('stroke', '#bbbbbb'));
+          // Remap colors for warm paper background
+          svgEl.querySelectorAll('[stroke="#FF0000"]').forEach(el => el.setAttribute('stroke', '#cc2200'));
+          svgEl.querySelectorAll('[stroke="#0000FF"]').forEach(el => el.setAttribute('stroke', '#2244aa'));
+          svgEl.querySelectorAll('[fill="#0000FF"]').forEach(el => el.setAttribute('fill', '#2244aa'));
+          svgEl.querySelectorAll('[stroke="#00AA00"]').forEach(el => el.setAttribute('stroke', '#338844'));
+          svgEl.querySelectorAll('[fill="#00AA00"]').forEach(el => el.setAttribute('fill', '#338844'));
+          svgEl.querySelectorAll('[stroke="#AAAAAA"]').forEach(el => el.setAttribute('stroke', '#c8c0b0'));
           // Boost thin stroke widths for visibility
           svgEl.querySelectorAll('#CUT *').forEach(el => {
             const sw = parseFloat(el.getAttribute('stroke-width'));
             if (sw && sw < 0.4) el.setAttribute('stroke-width', '0.6');
           });
-          // Boost etch opacity
+          // Boost etch opacity for paper background
           svgEl.querySelectorAll('#ETCH-DEEP [opacity]').forEach(el => {
             const op = parseFloat(el.getAttribute('opacity'));
-            if (op && op < 0.5) el.setAttribute('opacity', Math.min(op * 2.5, 0.8));
+            if (op && op < 0.5) el.setAttribute('opacity', Math.min(op * 3, 0.85));
           });
         }
       });
@@ -493,10 +497,9 @@
     const viewport = document.getElementById('viewport-' + fileKey);
     const layer = viewport.querySelector('#' + layerId);
     if (!layer) {
-      // Try case-insensitive search for reference layers
-      const allGs = viewport.querySelectorAll('g[fill="#00AA00"], g[id]');
+      const allGs = viewport.querySelectorAll('g[fill="#338844"], g[fill="#00AA00"], g[id]');
       for (const g of allGs) {
-        if (g.id === layerId || (layerId === 'ETCH-REF' && g.getAttribute('fill') === '#00AA00')) {
+        if (g.id === layerId || (layerId === 'ETCH-REF' && (g.getAttribute('fill') === '#338844' || g.getAttribute('fill') === '#00AA00'))) {
           g.style.display = g.style.display === 'none' ? '' : 'none';
           btn.classList.toggle('active');
           return;
