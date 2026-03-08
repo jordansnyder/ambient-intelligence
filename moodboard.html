@@ -56,17 +56,21 @@
 
   /* Header */
   .header {
-    padding: 60px 40px 40px;
+    padding: 60px 60px 40px;
     border-bottom: 1px solid var(--border);
     position: relative;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .header::after {
     content: 'ARC-2026-AI-MOODBOARD';
     position: absolute;
     top: 20px;
-    right: 40px;
-    font-size: 10px;
+    right: 60px;
+    font-size: 11px;
     letter-spacing: 3px;
     color: var(--accent-dim);
     opacity: 0.5;
@@ -87,7 +91,7 @@
   }
 
   .header .subtitle {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 4px;
     text-transform: uppercase;
     color: var(--accent);
@@ -96,22 +100,22 @@
 
   .header .concept {
     font-family: var(--serif);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 300;
     font-style: italic;
     color: var(--fg);
     opacity: 0.6;
-    max-width: 700px;
-    line-height: 1.6;
+    max-width: 800px;
+    line-height: 1.8;
   }
 
   /* Section headers */
   .section-label {
-    font-size: 9px;
+    font-size: 13px;
     letter-spacing: 5px;
     text-transform: uppercase;
     color: var(--accent);
-    padding: 30px 40px 15px;
+    padding: 80px 60px 24px;
     border-top: 1px solid var(--border);
     display: flex;
     align-items: center;
@@ -120,7 +124,7 @@
 
   .section-label::before {
     content: '◈';
-    font-size: 8px;
+    font-size: 12px;
   }
 
   .section-label::after {
@@ -134,8 +138,8 @@
   .mood-grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 2px;
-    padding: 2px 40px 40px;
+    gap: 8px;
+    padding: 8px 60px 60px;
   }
 
   .mood-item {
@@ -182,7 +186,7 @@
     bottom: 10px;
     left: 12px;
     right: 12px;
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--accent);
@@ -198,7 +202,7 @@
     position: absolute;
     top: 8px;
     right: 10px;
-    font-size: 7px;
+    font-size: 9px;
     letter-spacing: 1px;
     color: var(--accent-dim);
     opacity: 0.5;
@@ -208,14 +212,14 @@
   .concept-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    padding: 0 40px 40px;
+    gap: 12px;
+    padding: 0 60px 60px;
   }
 
   .concept-card {
     background: var(--bg-surface);
     border: 1px solid var(--border);
-    padding: 30px;
+    padding: 40px;
     transition: all 0.3s ease;
   }
 
@@ -226,7 +230,7 @@
   }
 
   .concept-card .card-id {
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 3px;
     color: var(--accent);
     margin-bottom: 16px;
@@ -235,27 +239,27 @@
   .concept-card h3 {
     font-family: var(--serif);
     font-weight: 300;
-    font-size: 22px;
+    font-size: 28px;
     color: var(--fg);
     margin-bottom: 12px;
   }
 
   .concept-card p {
-    font-size: 11px;
-    line-height: 1.8;
+    font-size: 14px;
+    line-height: 2.0;
     color: var(--fg-secondary);
   }
 
   /* Color palette strip */
   .palette-strip {
     display: flex;
-    padding: 0 40px 40px;
-    gap: 2px;
+    padding: 0 60px 60px;
+    gap: 6px;
   }
 
   .swatch {
     flex: 1;
-    height: 80px;
+    height: 100px;
     position: relative;
     transition: flex 0.4s ease;
     border: 1px solid var(--border);
@@ -267,7 +271,7 @@
     position: absolute;
     bottom: 8px;
     left: 10px;
-    font-size: 7px;
+    font-size: 9px;
     letter-spacing: 2px;
     text-transform: uppercase;
     opacity: 0;
@@ -295,16 +299,16 @@
 
   /* Panel preview section */
   .panel-preview {
-    padding: 0 40px 60px;
+    padding: 0 60px 80px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 60px;
   }
 
   .panel-diagram {
     background: #1a1810;
     border: 1px solid var(--border);
-    padding: 30px;
+    padding: 40px;
     position: relative;
     box-shadow: 0 2px 8px rgba(80, 60, 30, 0.1);
   }
@@ -322,13 +326,13 @@
   }
 
   .panel-notes .note {
-    padding: 16px 20px;
+    padding: 20px 24px;
     border-left: 2px solid var(--accent);
     background: var(--bg-surface);
   }
 
   .panel-notes .note h4 {
-    font-size: 9px;
+    font-size: 12px;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: var(--accent);
@@ -336,27 +340,27 @@
   }
 
   .panel-notes .note p {
-    font-size: 11px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 2.0;
     color: var(--fg-secondary);
   }
 
   /* Typography specimens */
   .type-specimens {
-    padding: 0 40px 60px;
+    padding: 0 60px 80px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
+    gap: 12px;
   }
 
   .type-block {
     background: var(--bg-surface);
-    padding: 40px 30px;
+    padding: 48px 40px;
     border: 1px solid var(--border);
   }
 
   .type-block .label-sm {
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 3px;
     color: var(--accent);
     margin-bottom: 16px;
@@ -365,7 +369,7 @@
 
   .type-block .specimen-mono {
     font-family: var(--mono);
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 2px;
     color: var(--fg);
     line-height: 2.2;
@@ -382,7 +386,7 @@
 
   /* Footer */
   .footer {
-    padding: 40px;
+    padding: 40px 60px;
     border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
@@ -390,13 +394,13 @@
   }
 
   .footer .left {
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 3px;
     color: var(--accent-dim);
   }
 
   .footer .right {
-    font-size: 8px;
+    font-size: 10px;
     letter-spacing: 2px;
     color: var(--accent-dim);
     opacity: 0.5;
@@ -421,14 +425,18 @@
   }
 
   @media (max-width: 900px) {
-    .mood-grid { grid-template-columns: repeat(6, 1fr); }
+    .header { min-height: 50vh; padding: 40px 30px 30px; }
+    .section-label { padding: 50px 30px 18px; }
+    .mood-grid { grid-template-columns: repeat(6, 1fr); padding: 8px 30px 40px; }
     .mood-item.wide { grid-column: span 3; }
     .mood-item.large { grid-column: span 6; }
     .mood-item.full { grid-column: span 6; }
     .mood-item.medium { grid-column: span 2; }
-    .concept-grid { grid-template-columns: 1fr; }
-    .panel-preview { grid-template-columns: 1fr; }
-    .type-specimens { grid-template-columns: 1fr; }
+    .concept-grid { grid-template-columns: 1fr; padding: 0 30px 40px; }
+    .palette-strip { padding: 0 30px 40px; }
+    .panel-preview { grid-template-columns: 1fr; padding: 0 30px 60px; }
+    .type-specimens { grid-template-columns: 1fr; padding: 0 30px 60px; }
+    .footer { padding: 30px; }
   }
 </style>
 </head>
@@ -450,7 +458,7 @@
 <div class="mood-grid">
   <div class="mood-item wide" style="background: linear-gradient(135deg, #2a2520, #3d3830); display:flex; align-items:center; justify-content:center;">
     <div style="text-align:center; padding: 20px;">
-      <div style="font-family: var(--serif); font-size: 28px; font-weight: 300; font-style: italic; color: #d4d0c8; opacity: 0.9; line-height:1.4;">Mysterious.<br>Clinical.<br>Beautiful.</div>
+      <div style="font-family: var(--serif); font-size: 32px; font-weight: 300; font-style: italic; color: #d4d0c8; opacity: 0.9; line-height:1.4;">Mysterious.<br>Clinical.<br>Beautiful.</div>
     </div>
     <div class="ref-id" style="color: #8a7548;">TONE-001</div>
   </div>
@@ -463,8 +471,8 @@
   </div>
   <div class="mood-item wide" style="background: linear-gradient(180deg, #1a1c22, #2a2520); display:flex; align-items:center; justify-content:center;">
     <div style="text-align:center;">
-      <div style="font-size: 9px; letter-spacing: 4px; color: #c8a96e; margin-bottom: 12px;">REFERENCE: SVALBARD SEED VAULT</div>
-      <div style="font-size: 11px; color: #d4d0c8; opacity: 0.7; max-width: 250px; line-height: 1.7;">Preserving something essential in austere, monumental architecture. Utilitarian beauty. The gravity of safekeeping knowledge.</div>
+      <div style="font-size: 12px; letter-spacing: 4px; color: #c8a96e; margin-bottom: 12px;">REFERENCE: SVALBARD SEED VAULT</div>
+      <div style="font-size: 14px; color: #d4d0c8; opacity: 0.7; max-width: 300px; line-height: 1.8;">Preserving something essential in austere, monumental architecture. Utilitarian beauty. The gravity of safekeeping knowledge.</div>
     </div>
     <div class="ref-id" style="color: #8a7548;">TONE-003</div>
   </div>
@@ -505,7 +513,7 @@
 
 <!-- PANEL SYSTEM -->
 <div class="section-label">04 — Panel Assembly System
-  <a href="laser-files.html" style="font-size: 9px; letter-spacing: 2px; color: var(--accent); text-decoration: none; border: 1px solid var(--border-strong); padding: 4px 12px; margin-left: auto; transition: all 0.3s ease; flex: none;" onmouseover="this.style.background='rgba(138,109,59,0.08)'" onmouseout="this.style.background='transparent'">View Laser Cut Files →</a>
+  <a href="laser-files.html" style="font-size: 11px; letter-spacing: 2px; color: var(--accent); text-decoration: none; border: 1px solid var(--border-strong); padding: 6px 16px; margin-left: auto; transition: all 0.3s ease; flex: none;" onmouseover="this.style.background='rgba(138,109,59,0.08)'" onmouseout="this.style.background='transparent'">View Laser Cut Files →</a>
 </div>
 <div class="panel-preview">
   <div class="panel-diagram">
@@ -640,7 +648,7 @@
 
 <!-- ETCHING DETAIL -->
 <div class="section-label">06 — Specimen Label Detail</div>
-<div style="padding: 0 40px 60px;">
+<div style="padding: 0 60px 80px;">
   <div style="background: #1a1810; border: 1px solid var(--border); padding: 40px; max-width: 700px; box-shadow: 0 2px 8px rgba(80,60,30,0.1);">
     <svg viewBox="0 0 600 180" xmlns="http://www.w3.org/2000/svg">
       <rect width="600" height="180" fill="#1a1810"/>
