@@ -427,6 +427,29 @@
     </div>
   </div>
 
+  <!-- Control Surface -->
+  <div class="file-card" id="card-control">
+    <div class="file-card-header">
+      <div>
+        <div class="file-card-title">panel-control-surface.svg</div>
+        <div class="file-card-meta">TACTILE CONTROL ARRAY — SMOKED 3MM ACRYLIC</div>
+      </div>
+      <div class="file-card-controls">
+        <button class="layer-toggle cut active" onclick="toggleLayer('control','CUT',this)">Cut</button>
+        <button class="layer-toggle etch-deep active" onclick="toggleLayer('control','ETCH-DEEP',this)">Etch Deep</button>
+        <button class="layer-toggle etch-light active" onclick="toggleLayer('control','ETCH-LIGHT',this)">Etch Light</button>
+        <a href="panel-control-surface.svg" download class="download-btn">Download SVG</a>
+      </div>
+    </div>
+    <div class="svg-viewport" id="viewport-control"></div>
+    <div class="file-card-specs">
+      <div class="spec"><strong>Dimensions:</strong> 280 × 170 mm (11" × 6.7")</div>
+      <div class="spec"><strong>Material:</strong> Smoked 3mm acrylic, cyan fluorescent edge</div>
+      <div class="spec"><strong>Inputs:</strong> 4× 16mm rotary potentiometer (10kΩ linear)</div>
+      <div class="spec"><strong>Features:</strong> RF spectrum graphics, signal flow, dial surrounds</div>
+    </div>
+  </div>
+
   <!-- Fan Bracket -->
   <div class="file-card" id="card-fan">
     <div class="file-card-header">
@@ -460,6 +483,7 @@
   const files = {
     backplate: 'panel-standard-12x16-backplate.svg',
     mounting: 'panel-standard-12x16-mounting-layer.svg',
+    control: 'panel-control-surface.svg',
     fan: 'panel-fan-bracket.svg'
   };
 

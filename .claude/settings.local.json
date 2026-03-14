@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(python create_bom.py)",
+      "Bash(python3 create_bom.py)",
+      "Bash(pip3 install:*)",
+      "Bash(python3 -m venv .venv)",
+      "Bash(source .venv/bin/activate)",
+      "Bash(pip install:*)",
+      "Bash(python3 \"/Users/jordansnyder/Library/Application Support/Claude/local-agent-mode-sessions/skills-plugin/39a81a12-56c7-496d-a820-22a9adf38d9d/59d73149-08c6-4035-8399-ba6d6f3c072a/skills/xlsx/scripts/recalc.py\" \"/Users/jordansnyder/Dev/ambient-intelligence/ARC-2026-AI_BOM_PurchaseOrder.xlsx\")"
+    ]
+  }
+}
