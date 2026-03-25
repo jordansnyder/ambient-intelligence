@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="330mm" height="432mm"
-     viewBox="-13 -13 330 432"
+     width="304.8mm" height="450mm"
+     viewBox="0 -5 304.8 455"
      style="background: transparent;">
 
   <!-- ============================================ -->
@@ -11,24 +11,9 @@
   <!-- Wall-mounted. Devices mount directly to this.  -->
   <!-- SCALE: 1:1 — 1 viewBox unit = 1mm             -->
   <!-- ============================================ -->
-  <!-- LAYER: CUT (RED #FF0000) — Through-cut         -->
-  <!-- LAYER: ETCH-DEEP (BLUE #0000FF) — Deep engrave -->
-  <!-- LAYER: ETCH-LIGHT (GREEN #00AA00) — Light etch -->
+  <!-- LAYER: CUT (RED #FF0000) — Through-cut only    -->
+  <!-- Simplified — no decorative etching.             -->
   <!-- ============================================ -->
-
-  <defs>
-    <!-- Alignment grid pattern (etch layer) -->
-    <pattern id="grid10" width="10" height="10" patternUnits="userSpaceOnUse">
-      <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#AAAAAA" stroke-width="0.1" opacity="0.3"/>
-    </pattern>
-    <pattern id="grid50" width="50" height="50" patternUnits="userSpaceOnUse">
-      <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#AAAAAA" stroke-width="0.15" opacity="0.4"/>
-    </pattern>
-
-    <clipPath id="panelClip">
-      <rect x="5" y="5" width="294.8" height="396.4" rx="3"/>
-    </clipPath>
-  </defs>
 
 
   <!-- === CUT LAYER (RED #FF0000) === -->
@@ -73,7 +58,6 @@
     <!-- Badge: 254 x 51mm, left-aligned at bottom    -->
     <!-- Badge top edge at y=355.4 (345 + 10mm gap)   -->
     <!-- Badge bottom edge at y=406.4                  -->
-    <!-- Badge left edge at x=12, right at x=266       -->
     <!-- ============================================ -->
 
     <!-- Badge standoff holes (4 corners of badge area) -->
@@ -87,7 +71,7 @@
     <rect x="142.4" y="2" width="20" height="4" rx="1"/>
     <rect x="204.8" y="2" width="20" height="4" rx="1"/>
 
-    <!-- Cable routing slots (bottom edge, below cover panel) -->
+    <!-- Cable routing slots (below cover panel zone) -->
     <rect x="60" y="343" width="25" height="5" rx="1.5"/>
     <rect x="140" y="343" width="25" height="5" rx="1.5"/>
     <rect x="220" y="343" width="25" height="5" rx="1.5"/>
@@ -95,77 +79,14 @@
   </g>
 
 
-  <!-- === ETCH-LIGHT LAYER (GREEN #00AA00) — Alignment Grid === -->
-  <g id="ETCH-LIGHT" clip-path="url(#panelClip)">
-    <rect x="5" y="5" width="294.8" height="396.4" fill="url(#grid10)"/>
-    <rect x="5" y="5" width="294.8" height="396.4" fill="url(#grid50)"/>
-  </g>
-
-
-  <!-- === ETCH-DEEP LAYER (BLUE #0000FF) — Decorative Etching === -->
-  <g id="ETCH-DEEP" fill="#0000FF" stroke="none" font-family="'Courier New', monospace">
-
-    <!-- Specimen ID block (top-left) -->
-    <text x="25" y="35" font-size="5" letter-spacing="0.5">ARC-2026-AI-___</text>
-    <text x="25" y="42" font-size="3" letter-spacing="0.3">AMBIENT INTELLIGENCE RESEARCH ARCHIVE</text>
-    <text x="25" y="47" font-size="2.5" letter-spacing="0.3">CATALOGED: 2026.04 | CLASS: ΣΩ-ACTIVE</text>
-
-    <!-- Classification bar (top-right) -->
-    <rect x="230" y="25" width="55" height="0.3"/>
-    <text x="230" y="33" font-size="2.5" letter-spacing="0.8">MAESTRA NETWORK</text>
-    <text x="230" y="37" font-size="2" letter-spacing="0.5">NODE: ___  FREQ: ADAPTIVE</text>
-    <text x="230" y="41" font-size="2" letter-spacing="0.5">PROTOCOL: MQTT/OSC</text>
-    <rect x="230" y="43" width="55" height="0.3"/>
-
-    <!-- Decorative glyphs along left edge -->
-    <text x="10" y="80" font-size="3" opacity="0.6">◈</text>
-    <text x="10" y="120" font-size="3" opacity="0.6">◉</text>
-    <text x="10" y="160" font-size="3" opacity="0.6">◎</text>
-    <text x="10" y="200" font-size="3" opacity="0.6">◈</text>
-    <text x="10" y="240" font-size="3" opacity="0.6">◉</text>
-    <text x="10" y="280" font-size="3" opacity="0.6">◎</text>
-    <text x="10" y="320" font-size="3" opacity="0.6">◈</text>
-
-    <!-- Topographic contour lines (decorative background etch) -->
-    <g opacity="0.15" fill="none" stroke="#0000FF" stroke-width="0.2">
-      <ellipse cx="200" cy="160" rx="80" ry="50" transform="rotate(-15 200 160)"/>
-      <ellipse cx="200" cy="160" rx="65" ry="40" transform="rotate(-15 200 160)"/>
-      <ellipse cx="200" cy="160" rx="50" ry="30" transform="rotate(-15 200 160)"/>
-      <ellipse cx="200" cy="160" rx="35" ry="20" transform="rotate(-15 200 160)"/>
-      <ellipse cx="200" cy="160" rx="20" ry="12" transform="rotate(-15 200 160)"/>
-
-      <ellipse cx="80" cy="260" rx="60" ry="45" transform="rotate(20 80 260)"/>
-      <ellipse cx="80" cy="260" rx="45" ry="33" transform="rotate(20 80 260)"/>
-      <ellipse cx="80" cy="260" rx="30" ry="22" transform="rotate(20 80 260)"/>
-      <ellipse cx="80" cy="260" rx="18" ry="13" transform="rotate(20 80 260)"/>
-    </g>
-
-    <!-- Corner registration marks -->
-    <line x1="2" y1="20" x2="2" y2="2" stroke="#0000FF" stroke-width="0.15"/>
-    <line x1="2" y1="2" x2="20" y2="2" stroke="#0000FF" stroke-width="0.15"/>
-
-    <line x1="284.8" y1="2" x2="302.8" y2="2" stroke="#0000FF" stroke-width="0.15"/>
-    <line x1="302.8" y1="2" x2="302.8" y2="20" stroke="#0000FF" stroke-width="0.15"/>
-
-    <line x1="2" y1="386.4" x2="2" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
-    <line x1="2" y1="404.4" x2="20" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
-
-    <line x1="302.8" y1="386.4" x2="302.8" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
-    <line x1="284.8" y1="404.4" x2="302.8" y2="404.4" stroke="#0000FF" stroke-width="0.15"/>
-
-    <!-- Material note (bottom zone, between cover and badge area) -->
-    <text x="25" y="352" font-size="2" letter-spacing="0.3" opacity="0.4">AMBER BACKBOARD | 3mm ACRYLIC | 304.8 × 406.4mm (12" × 16") | DEVICES MOUNT DIRECTLY</text>
-
-  </g>
-
-
-  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <!-- === CALIBRATION REFERENCE (below cut boundary, 10mm gap) === -->
   <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
     <!-- 1" × 1" calibration square (25.4mm × 25.4mm) -->
-    <rect x="-12" y="-12" width="25.4" height="25.4"/>
-    <line x1="-12" y1="13.4" x2="13.4" y2="13.4" stroke-dasharray="1,1"/>
-    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
-    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <rect x="10" y="416.4" width="25.4" height="25.4"/>
+    <text x="10" y="413" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="40" y="428" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <text x="40" y="434" fill="#00AA00" font-size="2" letter-spacing="0.2">AMBER BACKBOARD | 3mm ACRYLIC | 304.8 × 406.4mm (12" × 16")</text>
+    <text x="40" y="440" fill="#00AA00" font-size="2" letter-spacing="0.2">DEVICES MOUNT DIRECTLY — ARTISTS DRILL OWN HOLES</text>
   </g>
 
 </svg>

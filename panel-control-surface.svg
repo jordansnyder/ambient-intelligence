@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="305mm" height="195mm"
-     viewBox="-13 -13 305 195"
+     width="280mm" height="210mm"
+     viewBox="0 -5 280 215"
      style="background: transparent;">
 
   <defs>
@@ -282,11 +282,12 @@
   </g>
 
 
-  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <!-- === CALIBRATION REFERENCE (below cut boundary, 10mm gap) === -->
   <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
-    <rect x="-12" y="-12" width="25.4" height="25.4"/>
-    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
-    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <rect x="10" y="180" width="25.4" height="25.4"/>
+    <text x="10" y="177" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="40" y="192" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <text x="40" y="198" fill="#00AA00" font-size="2" letter-spacing="0.2">CONTROL SURFACE | 3mm SMOKED ACRYLIC | 280 × 170mm</text>
   </g>
 
 </svg>

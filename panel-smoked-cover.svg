@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="330mm" height="370mm"
-     viewBox="-13 -13 330 370"
+     width="304.8mm" height="390mm"
+     viewBox="0 -5 304.8 395"
      style="background: transparent;">
 
   <!-- ============================================ -->
@@ -40,15 +40,13 @@
   </g>
 
 
-  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <!-- === CALIBRATION REFERENCE (below cut boundary, 10mm gap) === -->
   <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
     <!-- 1" × 1" calibration square (25.4mm × 25.4mm) -->
-    <rect x="-12" y="-12" width="25.4" height="25.4"/>
-    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
-    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
-
-    <!-- File identification (outside cut boundary) -->
-    <text x="0" y="355" fill="#00AA00" font-size="2" letter-spacing="0.3">SMOKED COVER PANEL | 3mm ACRYLIC | 304.8 × 345mm | NO ETCH — CUT ONLY</text>
+    <rect x="10" y="355" width="25.4" height="25.4"/>
+    <text x="10" y="352" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="40" y="367" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <text x="40" y="373" fill="#00AA00" font-size="2" letter-spacing="0.2">SMOKED COVER PANEL | 3mm ACRYLIC | 304.8 × 345mm | NO ETCH — CUT ONLY</text>
   </g>
 
 </svg>

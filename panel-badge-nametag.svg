@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="280mm" height="77mm"
-     viewBox="-13 -13 280 77"
+     width="254mm" height="100mm"
+     viewBox="0 -5 254 105"
      style="background: transparent;">
 
   <!-- ============================================ -->
@@ -51,7 +51,6 @@
 
     <!-- OLED module mounting holes (M2, 2.2mm diameter)   -->
     <!-- Approximate positions — verify against datasheet! -->
-    <!-- Module corners, inset ~3mm from module edges       -->
     <!-- Module positioned: x=8 to x=108.5, y=8.75 to y=42.25 -->
     <circle cx="12" cy="12" r="1.1"/>
     <circle cx="105" cy="12" r="1.1"/>
@@ -62,11 +61,7 @@
     <!-- For ribbon cable / pin header to pass through      -->
     <rect x="30" y="43" width="55" height="5" rx="1"/>
 
-    <!-- Badge-to-backboard standoff holes (M3 = 3.2mm)     -->
-    <!-- These align with the backboard's badge mount holes  -->
-    <!-- Backboard holes at: (20,363), (258,363), (20,399), (258,399) -->
-    <!-- Badge local coords: badge x=12 on backboard         -->
-    <!-- So badge hole x = backboard_x - 12                  -->
+    <!-- Badge-to-backboard standoff holes (M3 = 3.2mm) -->
     <circle cx="8" cy="8" r="1.6"/>
     <circle cx="246" cy="8" r="1.6"/>
     <circle cx="8" cy="43" r="1.6"/>
@@ -77,8 +72,6 @@
 
   <!-- === ETCH-DEEP LAYER (BLUE #0000FF) — Badge Text === -->
   <g id="ETCH-DEEP" fill="#0000FF" stroke="none" font-family="'Courier New', monospace">
-
-    <!-- The etch will show as lighter text on black acrylic -->
 
     <!-- Specimen catalog ID (right of OLED window) -->
     <text x="115" y="20" font-size="4.5" letter-spacing="0.8">ARC-2026-AI-___</text>
@@ -109,16 +102,14 @@
   </g>
 
 
-  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <!-- === CALIBRATION REFERENCE (below cut boundary, 10mm gap) === -->
   <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
     <!-- 1" × 1" calibration square (25.4mm × 25.4mm) -->
-    <rect x="-12" y="-12" width="25.4" height="25.4"/>
-    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
-    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
-
-    <!-- File identification -->
-    <text x="0" y="60" fill="#00AA00" font-size="2" letter-spacing="0.3">BLACK BADGE | 3mm ACRYLIC | 254 × 51mm | OLED: ER-OLEDM032-1Y (100.5 × 33.5mm)</text>
-    <text x="0" y="65" fill="#00AA00" font-size="1.8" letter-spacing="0.2">NOTE: Verify OLED mounting holes against actual module before cutting. Hole positions are approximate.</text>
+    <rect x="10" y="61" width="25.4" height="25.4"/>
+    <text x="10" y="58" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="40" y="73" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+    <text x="40" y="79" fill="#00AA00" font-size="2" letter-spacing="0.2">BLACK BADGE | 3mm ACRYLIC | 254 × 51mm | OLED: ER-OLEDM032-1Y (100.5 × 33.5mm)</text>
+    <text x="40" y="85" fill="#00AA00" font-size="2" letter-spacing="0.2">NOTE: Verify OLED mounting holes against actual module before cutting.</text>
   </g>
 
 </svg>
