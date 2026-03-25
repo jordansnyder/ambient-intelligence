@@ -517,17 +517,18 @@
 </div>
 <div class="panel-preview">
   <div class="panel-diagram">
-    <!-- Simplified panel cross-section diagram -->
-    <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+    <!-- Simplified panel cross-section diagram — UPDATED ASSEMBLY -->
+    <svg viewBox="0 0 400 700" xmlns="http://www.w3.org/2000/svg">
       <!-- Background -->
-      <rect width="400" height="500" fill="#1a1810"/>
+      <rect width="400" height="700" fill="#1a1810"/>
 
       <!-- Title -->
       <text x="20" y="30" fill="#c8a96e" font-family="monospace" font-size="9" letter-spacing="3">PANEL ASSEMBLY — EXPLODED VIEW</text>
+      <text x="20" y="42" fill="#c8a96e" font-family="monospace" font-size="6" letter-spacing="1" opacity="0.4">WALL → AMBER BACKBOARD → DEVICES → STANDOFFS → SMOKED COVER → BADGE</text>
 
-      <!-- Layer 1: Back plate (smoked acrylic) -->
+      <!-- Layer 1: Amber Acrylic Backboard (wall-mounted) -->
       <g transform="translate(50, 60)">
-        <rect x="0" y="0" width="200" height="280" rx="4" fill="none" stroke="#8a7548" stroke-width="0.5" opacity="0.6"/>
+        <rect x="0" y="0" width="200" height="280" rx="4" fill="rgba(200,150,50,0.06)" stroke="#c8a96e" stroke-width="0.7" opacity="0.8"/>
         <!-- Grid pattern -->
         <g opacity="0.15" stroke="#c8a96e" stroke-width="0.3">
           <line x1="0" y1="0" x2="0" y2="280"/>
@@ -543,80 +544,97 @@
           <line x1="0" y1="224" x2="200" y2="224"/>
           <line x1="0" y1="280" x2="200" y2="280"/>
         </g>
-        <!-- Topo lines -->
-        <ellipse cx="130" cy="140" rx="60" ry="35" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.1" transform="rotate(-15 130 140)"/>
-        <ellipse cx="130" cy="140" rx="40" ry="22" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.1" transform="rotate(-15 130 140)"/>
-        <!-- Label -->
+        <!-- Topo contours -->
+        <ellipse cx="130" cy="120" rx="60" ry="35" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.12" transform="rotate(-15 130 120)"/>
+        <ellipse cx="130" cy="120" rx="40" ry="22" fill="none" stroke="#c8a96e" stroke-width="0.3" opacity="0.12" transform="rotate(-15 130 120)"/>
+        <!-- Specimen ID -->
         <text x="5" y="15" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.8">ARC-2026-AI-___</text>
-        <!-- Specimen text -->
         <text x="5" y="270" fill="#c8a96e" font-family="monospace" font-size="5" opacity="0.5">MAESTRA NETWORK | NODE: ___</text>
+
+        <!-- Devices mounted directly (shown as dashed outlines) -->
+        <rect x="15" y="60" width="55" height="35" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.35" stroke-dasharray="3,2"/>
+        <text x="17" y="72" fill="#d4d0c8" font-family="monospace" font-size="4" opacity="0.3">RPi 4</text>
+        <rect x="90" y="55" width="45" height="30" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.35" stroke-dasharray="3,2"/>
+        <text x="92" y="67" fill="#d4d0c8" font-family="monospace" font-size="4" opacity="0.3">MCU</text>
+        <rect x="30" y="130" width="70" height="50" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.35" stroke-dasharray="3,2"/>
+        <text x="32" y="142" fill="#d4d0c8" font-family="monospace" font-size="4" opacity="0.3">Audio I/F</text>
       </g>
-      <text x="270" y="200" fill="#8a7548" font-family="monospace" font-size="7" opacity="0.7">← BACKPLATE</text>
-      <text x="270" y="212" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">Smoked 3mm acrylic</text>
-      <text x="270" y="222" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">Laser etched grid +</text>
-      <text x="270" y="232" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">topo + specimen ID</text>
+      <text x="270" y="140" fill="#c8a96e" font-family="monospace" font-size="7" opacity="0.7">← AMBER BACKBOARD</text>
+      <text x="270" y="152" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">Amber 3mm acrylic</text>
+      <text x="270" y="162" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">Etched grid + topo +</text>
+      <text x="270" y="172" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">specimen ID</text>
+      <text x="270" y="188" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">Devices mount directly</text>
+      <text x="270" y="198" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">(artists drill own holes)</text>
 
       <!-- Standoff indicators -->
       <g stroke="#c8a96e" stroke-width="1" opacity="0.4">
-        <line x1="80" y1="345" x2="80" y2="355" stroke-dasharray="2,2"/>
-        <line x1="150" y1="345" x2="150" y2="355" stroke-dasharray="2,2"/>
-        <line x1="220" y1="345" x2="220" y2="355" stroke-dasharray="2,2"/>
+        <line x1="65" y1="345" x2="65" y2="365" stroke-dasharray="2,2"/>
+        <line x1="150" y1="345" x2="150" y2="365" stroke-dasharray="2,2"/>
+        <line x1="235" y1="345" x2="235" y2="365" stroke-dasharray="2,2"/>
       </g>
-      <text x="270" y="352" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.4">15-20mm brass standoffs</text>
+      <text x="270" y="358" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.5">M3 brass standoffs</text>
+      <text x="270" y="368" fill="#8a7548" font-family="monospace" font-size="6" opacity="0.35">(tall enough for devices)</text>
 
-      <!-- Layer 2: Mounting layer -->
-      <g transform="translate(50, 360)">
-        <rect x="0" y="0" width="200" height="60" rx="3" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.4"/>
-        <!-- Device outlines -->
-        <rect x="15" y="10" width="55" height="35" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
-        <rect x="85" y="8" width="45" height="30" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
-        <rect x="140" y="12" width="50" height="38" rx="2" fill="none" stroke="#d4d0c8" stroke-width="0.5" opacity="0.3" stroke-dasharray="3,2"/>
-        <!-- Cable slots -->
-        <rect x="5" y="20" width="3" height="25" rx="1" fill="#d4d0c8" opacity="0.1"/>
-        <rect x="192" y="20" width="3" height="25" rx="1" fill="#d4d0c8" opacity="0.1"/>
+      <!-- Layer 2: Smoked Acrylic Cover (shorter, sits on standoffs) -->
+      <g transform="translate(50, 375)">
+        <rect x="0" y="0" width="200" height="240" rx="4" fill="rgba(100,100,100,0.08)" stroke="#888" stroke-width="0.5" opacity="0.5"/>
+        <text x="5" y="15" fill="#888" font-family="monospace" font-size="5" opacity="0.4">PLAIN SMOKED ACRYLIC</text>
+        <text x="5" y="230" fill="#888" font-family="monospace" font-size="4" opacity="0.3">304.8 × 345mm — CUT ONLY, NO ETCH</text>
       </g>
-      <text x="270" y="385" fill="#d4d0c8" font-family="monospace" font-size="7" opacity="0.7">← MOUNT LAYER</text>
-      <text x="270" y="397" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">Clear/frosted 3mm</text>
-      <text x="270" y="407" fill="#d4d0c8" font-family="monospace" font-size="6" opacity="0.4">Custom device cutouts</text>
+      <text x="270" y="480" fill="#888" font-family="monospace" font-size="7" opacity="0.6">← SMOKED COVER</text>
+      <text x="270" y="492" fill="#888" font-family="monospace" font-size="6" opacity="0.35">Smoked 3mm acrylic</text>
+      <text x="270" y="502" fill="#888" font-family="monospace" font-size="6" opacity="0.35">Plain, no etching</text>
 
-      <!-- Layer 3: Info strip -->
-      <g transform="translate(50, 440)">
-        <rect x="0" y="0" width="200" height="30" rx="2" fill="rgba(200,169,110,0.05)" stroke="#c8a96e" stroke-width="0.5" opacity="0.5"/>
+      <!-- 10mm gap indicator -->
+      <g stroke="#c8a96e" stroke-width="0.5" opacity="0.3" stroke-dasharray="1,2">
+        <line x1="50" y1="619" x2="250" y2="619"/>
+      </g>
+
+      <!-- Layer 3: Black Badge (left-aligned, with standoffs) -->
+      <g transform="translate(50, 628)">
+        <rect x="0" y="0" width="170" height="30" rx="2" fill="rgba(20,20,20,0.3)" stroke="#c8a96e" stroke-width="0.5" opacity="0.6"/>
         <!-- OLED window -->
-        <rect x="8" y="6" width="24" height="13" rx="1" fill="none" stroke="#00ff88" stroke-width="0.5" opacity="0.6"/>
-        <text x="12" y="15" fill="#00ff88" font-family="monospace" font-size="4" opacity="0.6">OLED</text>
+        <rect x="8" y="5" width="52" height="14" rx="1" fill="none" stroke="#cc9900" stroke-width="0.6" opacity="0.7"/>
+        <text x="14" y="14" fill="#cc9900" font-family="monospace" font-size="4.5" opacity="0.7">3.2" OLED</text>
         <!-- Text area -->
-        <text x="40" y="12" fill="#c8a96e" font-family="monospace" font-size="4" opacity="0.5">SPECIMEN: _______________</text>
-        <text x="40" y="19" fill="#c8a96e" font-family="monospace" font-size="3.5" opacity="0.3">ARTIST: ___________ | NODE: AI-___</text>
-        <!-- Edge glow indicator -->
-        <line x1="0" y1="29" x2="200" y2="29" stroke="#ff6432" stroke-width="1.5" opacity="0.3"/>
+        <text x="68" y="12" fill="#c8a96e" font-family="monospace" font-size="4" opacity="0.5">ARC-2026-AI-___</text>
+        <text x="68" y="20" fill="#c8a96e" font-family="monospace" font-size="3" opacity="0.3">ARTIST: ________</text>
+        <!-- Standoff dots -->
+        <circle cx="5" cy="5" r="1.5" fill="#c8a96e" opacity="0.2"/>
+        <circle cx="165" cy="5" r="1.5" fill="#c8a96e" opacity="0.2"/>
+        <circle cx="5" cy="25" r="1.5" fill="#c8a96e" opacity="0.2"/>
+        <circle cx="165" cy="25" r="1.5" fill="#c8a96e" opacity="0.2"/>
       </g>
-      <text x="270" y="455" fill="#c8a96e" font-family="monospace" font-size="7" opacity="0.7">← INFO STRIP</text>
-      <text x="270" y="467" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">Black 3mm acrylic</text>
-      <text x="270" y="477" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">OLED + edge-lit accent</text>
+
+      <!-- Badge labels - positioned relative to the viewBox -->
+      <text x="270" y="643" fill="#c8a96e" font-family="monospace" font-size="7" opacity="0.7">← BLACK BADGE</text>
+      <text x="270" y="655" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">Black 3mm acrylic</text>
+      <text x="270" y="665" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">254 × 51mm, left-aligned</text>
+      <text x="270" y="675" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">3.2" OLED (yellow output)</text>
+      <text x="270" y="685" fill="#c8a96e" font-family="monospace" font-size="6" opacity="0.4">M3 standoffs for depth</text>
     </svg>
   </div>
 
   <div class="panel-notes">
     <div class="note">
-      <h4>Backplate — Smoked Acrylic</h4>
-      <p>3mm tinted acrylic (dark gray or amber). Laser-etched alignment grid, topographic contours, and specimen catalog ID. The "research document" that everything sits on.</p>
+      <h4>Backboard — Amber Acrylic</h4>
+      <p>3mm amber/tinted acrylic, wall-mounted. Laser-etched alignment grid, topographic contours, and specimen catalog ID. Devices mount directly — artists drill their own mounting holes for any combination of hardware.</p>
     </div>
     <div class="note">
-      <h4>Mounting Layer — Clear/Frosted</h4>
-      <p>3mm clear or frosted acrylic with custom cutouts per artist's devices. Brass hex standoffs create 15-20mm air gap for cooling and cable routing. Devices float above the grid.</p>
+      <h4>Smoked Cover Panel</h4>
+      <p>3mm smoked acrylic, 304.8 x 345mm. Plain — no etching. Sits on brass standoffs over the devices, creating depth and protecting hardware. The amber glow and device shapes show through.</p>
     </div>
     <div class="note">
-      <h4>Info Strip — Black Acrylic</h4>
-      <p>Specimen catalog entry with OLED screen showing live Maestra network data. Edge-lit with fluorescent acrylic accent strip — each artist gets a unique glow color.</p>
+      <h4>Badge / Nametag — Black Acrylic</h4>
+      <p>254 x 51mm (10" x 2"), left-aligned below the smoked cover. Mounted on its own M3 standoffs for a floating effect. Embeds a 3.2" OLED display (256x64, yellow on black, SSD1322) showing live Maestra network data. Etched specimen ID and artist info.</p>
     </div>
     <div class="note">
       <h4>Cable Management</h4>
-      <p>Braided mesh sleeving in matte black. Heat-shrink labels at each terminus in matching monospace font. Cables route between layers through dedicated slots.</p>
+      <p>Braided mesh sleeving in matte black. Heat-shrink labels at each terminus in matching monospace font. Cables route through slots in the backboard between the cover zone and badge zone.</p>
     </div>
     <div class="note">
       <h4>Optional: Thermal Unit</h4>
-      <p>40mm Noctua fan bracket for heat-generating devices. Mounts below panel. The layer gap creates a natural convection chimney — fan assists when needed.</p>
+      <p>40mm Noctua fan bracket for heat-generating devices. Mounts below panel. The standoff gap creates a natural convection chimney — fan assists when needed.</p>
     </div>
   </div>
 </div>

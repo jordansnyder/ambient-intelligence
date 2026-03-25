@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg"
-     width="280mm" height="170mm"
-     viewBox="0 0 280 170"
+     width="305mm" height="195mm"
+     viewBox="-13 -13 305 195"
      style="background: transparent;">
 
   <defs>
@@ -279,6 +279,14 @@
     <!-- Cable routing slot (bottom center) -->
     <rect x="125" y="164" width="30" height="6" rx="2"/>
 
+  </g>
+
+
+  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
+    <rect x="-12" y="-12" width="25.4" height="25.4"/>
+    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
   </g>
 
 </svg>

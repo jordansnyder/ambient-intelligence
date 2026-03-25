@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="330mm" height="370mm"
+     viewBox="-13 -13 330 370"
+     style="background: transparent;">
+
+  <!-- ============================================ -->
+  <!-- SMOKED ACRYLIC COVER PANEL                    -->
+  <!-- 304.8mm × 345mm                               -->
+  <!-- Material: Smoked/dark tinted 3mm acrylic       -->
+  <!-- Plain — no etching. Sits on standoffs over     -->
+  <!-- devices, top-aligned with amber backboard.     -->
+  <!-- SCALE: 1:1 — 1 viewBox unit = 1mm             -->
+  <!-- ============================================ -->
+  <!-- LAYER: CUT (RED #FF0000) — Through-cut only    -->
+  <!-- ============================================ -->
+
+
+  <!-- === CUT LAYER (RED #FF0000) === -->
+  <g id="CUT" fill="none" stroke="#FF0000" stroke-width="0.1">
+
+    <!-- Outer panel boundary — rounded corners -->
+    <rect x="0" y="0" width="304.8" height="345" rx="5" ry="5"/>
+
+    <!-- Corner standoff through-holes (M3 = 3.2mm, align with backboard) -->
+    <circle cx="15" cy="15" r="1.6"/>
+    <circle cx="289.8" cy="15" r="1.6"/>
+    <circle cx="15" cy="340" r="1.6"/>
+    <circle cx="289.8" cy="340" r="1.6"/>
+
+    <!-- Mid-edge standoff holes (for rigidity, align with backboard) -->
+    <circle cx="152.4" cy="15" r="1.6"/>
+    <circle cx="152.4" cy="340" r="1.6"/>
+    <circle cx="15" cy="177.5" r="1.6"/>
+    <circle cx="289.8" cy="177.5" r="1.6"/>
+
+    <!-- Center standoff -->
+    <circle cx="152.4" cy="177.5" r="1.6"/>
+
+  </g>
+
+
+  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
+    <!-- 1" × 1" calibration square (25.4mm × 25.4mm) -->
+    <rect x="-12" y="-12" width="25.4" height="25.4"/>
+    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+
+    <!-- File identification (outside cut boundary) -->
+    <text x="0" y="355" fill="#00AA00" font-size="2" letter-spacing="0.3">SMOKED COVER PANEL | 3mm ACRYLIC | 304.8 × 345mm | NO ETCH — CUT ONLY</text>
+  </g>
+
+</svg>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" 
-     width="80mm" height="55mm" 
-     viewBox="0 0 80 55"
+     width="105mm" height="80mm"
+     viewBox="-13 -13 105 80"
      style="background: transparent;">
   
   <!-- ============================================ -->
@@ -43,4 +43,12 @@
     <text x="5" y="52" font-size="1.8" letter-spacing="0.3">THERMAL MGMT UNIT | 40mm | 5V</text>
   </g>
   
+
+  <!-- === CALIBRATION REFERENCE (outside cut boundary) === -->
+  <g fill="none" stroke="#00AA00" stroke-width="0.15" font-family="'Courier New', monospace">
+    <rect x="-12" y="-12" width="25.4" height="25.4"/>
+    <text x="-12" y="-14" fill="#00AA00" font-size="2" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
+    <text x="-12" y="19" fill="#00AA00" font-size="1.8" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
+  </g>
+
 </svg>
