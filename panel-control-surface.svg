@@ -10,8 +10,8 @@
   <!-- Material: Smoked 3/16" (4.76mm) Acrylic      -->
   <!-- Potentiometers: P160 (TT Electronics/BI)     -->
   <!--   Bushing: M7xP0.75, shaft ø6.0mm           -->
-  <!--   Panel hole: ø7.5mm, anti-rot: ø3.2mm      -->
-  <!--   Anti-rot offset: 7.8mm from shaft center   -->
+  <!--   Panel hole: ø7.5mm                          -->
+  <!--   Anti-rot slot: 3.5 x 2mm, 7.8mm from shaft -->
   <!-- Knobs: ~24.26mm diameter (US quarter)        -->
   <!-- SCALE: 1:1 — 1 viewBox unit = 1mm           -->
   <!-- ============================================ -->
@@ -36,46 +36,46 @@
 
     <!-- ── KNOB I ── -->
     <g transform="translate(42.5, 90)">
-      <!-- 260° arc, r=16, dead zone at bottom -->
-      <path d="M -12.26 10.28 A 16 16 0 1 0 12.26 10.28"
+      <!-- 260° arc, r=16, dead zone at top -->
+      <path d="M -12.26 -10.28 A 16 16 0 1 0 12.26 -10.28"
             fill="none" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
       <!-- Endpoint dots -->
-      <circle cx="-12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <circle cx="12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <!-- Center reference tick -->
-      <line x1="0" y1="-15" x2="0" y2="-17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <!-- Label -->
-      <text x="0" y="25" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">I</text>
+      <circle cx="-12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <circle cx="12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <!-- Center reference tick at 6 o'clock -->
+      <line x1="0" y1="15" x2="0" y2="17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
+      <!-- Label — centered between arc bottom (y≈16) and footer (y=65) -->
+      <text x="0" y="40" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">I</text>
     </g>
 
     <!-- ── KNOB II ── -->
     <g transform="translate(107.5, 90)">
-      <path d="M -12.26 10.28 A 16 16 0 1 0 12.26 10.28"
+      <path d="M -12.26 -10.28 A 16 16 0 1 0 12.26 -10.28"
             fill="none" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <circle cx="-12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <circle cx="12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <line x1="0" y1="-15" x2="0" y2="-17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <text x="0" y="25" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">II</text>
+      <circle cx="-12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <circle cx="12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <line x1="0" y1="15" x2="0" y2="17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
+      <text x="0" y="40" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">II</text>
     </g>
 
     <!-- ── KNOB III ── -->
     <g transform="translate(172.5, 90)">
-      <path d="M -12.26 10.28 A 16 16 0 1 0 12.26 10.28"
+      <path d="M -12.26 -10.28 A 16 16 0 1 0 12.26 -10.28"
             fill="none" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <circle cx="-12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <circle cx="12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <line x1="0" y1="-15" x2="0" y2="-17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <text x="0" y="25" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">III</text>
+      <circle cx="-12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <circle cx="12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <line x1="0" y1="15" x2="0" y2="17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
+      <text x="0" y="40" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">III</text>
     </g>
 
     <!-- ── KNOB IV ── -->
     <g transform="translate(237.5, 90)">
-      <path d="M -12.26 10.28 A 16 16 0 1 0 12.26 10.28"
+      <path d="M -12.26 -10.28 A 16 16 0 1 0 12.26 -10.28"
             fill="none" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <circle cx="-12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <circle cx="12.26" cy="10.28" r="0.5" opacity="0.3"/>
-      <line x1="0" y1="-15" x2="0" y2="-17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
-      <text x="0" y="25" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">IV</text>
+      <circle cx="-12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <circle cx="12.26" cy="-10.28" r="0.5" opacity="0.3"/>
+      <line x1="0" y1="15" x2="0" y2="17.5" stroke="#0000FF" stroke-width="0.15" opacity="0.25"/>
+      <text x="0" y="40" font-size="3.2" letter-spacing="2" text-anchor="middle" opacity="0.45">IV</text>
     </g>
 
 
@@ -127,11 +127,11 @@
     <circle cx="172.5" cy="90" r="3.75"/>
     <circle cx="237.5" cy="90" r="3.75"/>
 
-    <!-- P160 anti-rotation tab holes (ø3.2mm, 7.8mm above shaft center) -->
-    <circle cx="42.5" cy="82.2" r="1.6"/>
-    <circle cx="107.5" cy="82.2" r="1.6"/>
-    <circle cx="172.5" cy="82.2" r="1.6"/>
-    <circle cx="237.5" cy="82.2" r="1.6"/>
+    <!-- P160 anti-rotation tab slots (3.5 x 2mm, centered 7.8mm above shaft) -->
+    <rect x="40.75" y="81.2" width="3.5" height="2" rx="0.3"/>
+    <rect x="105.75" y="81.2" width="3.5" height="2" rx="0.3"/>
+    <rect x="170.75" y="81.2" width="3.5" height="2" rx="0.3"/>
+    <rect x="235.75" y="81.2" width="3.5" height="2" rx="0.3"/>
 
     <!-- Cable routing slot (bottom center) -->
     <rect x="125" y="164" width="30" height="6" rx="2"/>
@@ -145,7 +145,7 @@
     <text x="10" y="177" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
     <text x="40" y="192" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
     <text x="40" y="198" fill="#00AA00" font-size="2" letter-spacing="0.2">CONTROL SURFACE | 3/16" (4.76mm) SMOKED ACRYLIC | 280 × 170mm</text>
-    <text x="40" y="204" fill="#00AA00" font-size="2" letter-spacing="0.2">POTS: P160 (TT Electronics) | SHAFT HOLE: ø7.5mm | ANTI-ROT: ø3.2mm @ 7.8mm</text>
+    <text x="40" y="204" fill="#00AA00" font-size="2" letter-spacing="0.2">POTS: P160 (TT Electronics) | SHAFT HOLE: ø7.5mm | ANTI-ROT SLOT: 3.5 × 2mm @ 7.8mm</text>
   </g>
 
 </svg>
