@@ -15,9 +15,36 @@
   <!-- Knobs: ~24.26mm diameter (US quarter)        -->
   <!-- SCALE: 1:1 — 1 viewBox unit = 1mm           -->
   <!-- ============================================ -->
+  <!-- Piece: SIGINT::OPTICS                        -->
+  <!-- "Visualization of invisible energies"        -->
   <!-- LAYER: CUT (RED #FF0000) — Through-cut       -->
   <!-- LAYER: ETCH-DEEP (BLUE #0000FF) — Engrave    -->
+  <!-- LAYER: ETCH-LIGHT (GREEN #00AA00) — Surface   -->
   <!-- ============================================ -->
+
+  <defs>
+    <clipPath id="panelClip">
+      <rect x="0" y="0" width="280" height="170" rx="5" ry="5"/>
+    </clipPath>
+  </defs>
+
+
+  <!-- ================================================ -->
+  <!-- === ETCH-LIGHT LAYER (GREEN) - Wave field     === -->
+  <!-- Interference wavefronts from off-panel source    -->
+  <!-- Barely visible on smoked acrylic — catches light -->
+  <!-- ================================================ -->
+  <g id="ETCH-LIGHT" clip-path="url(#panelClip)">
+    <g fill="none" stroke="#00AA00" stroke-width="0.1" opacity="0.07">
+      <circle cx="-30" cy="110" r="45"/>
+      <circle cx="-30" cy="110" r="78"/>
+      <circle cx="-30" cy="110" r="111"/>
+      <circle cx="-30" cy="110" r="148"/>
+      <circle cx="-30" cy="110" r="190"/>
+      <circle cx="-30" cy="110" r="240"/>
+      <circle cx="-30" cy="110" r="295"/>
+    </g>
+  </g>
 
 
   <!-- ========================================= -->
@@ -28,10 +55,14 @@
     <!-- ── HEADER ── -->
     <rect x="12" y="12" width="256" height="0.25"/>
 
-    <text x="14" y="20" font-size="3.5" letter-spacing="1">ARC-2026-AI-___</text>
-    <text x="266" y="20" font-size="2" letter-spacing="0.8" text-anchor="end" opacity="0.25">ΣΩ</text>
+    <text x="14" y="20" font-size="3.5" letter-spacing="1">SIGINT::OPTICS</text>
+    <text x="266" y="20" font-size="2" letter-spacing="0.5" text-anchor="end" opacity="0.2">ARC-2026-AI-___</text>
 
     <rect x="12" y="25" width="256" height="0.1" opacity="0.3"/>
+
+    <!-- Faint intercepted signal trace -->
+    <polyline points="14,50 28,50 32,49.2 35,50 48,50 55,49 57,51.5 60,50 78,50 85,48.5 87,51 90,50 108,50 115,49.5 118,50 132,50 138,48 140,52 143,50 158,50 165,49.5 168,50 185,50 195,48 197,51.5 200,50 218,50 228,49 230,51 233,50 250,50 258,49.5 262,50 266,50"
+              fill="none" stroke="#0000FF" stroke-width="0.1" opacity="0.1"/>
 
 
     <!-- ── KNOB I ── -->
