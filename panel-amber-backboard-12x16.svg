@@ -7,7 +7,7 @@
   <!-- ============================================ -->
   <!-- AMBER ACRYLIC BACKBOARD — 12" × 16"          -->
   <!-- 304.8mm × 406.4mm                             -->
-  <!-- Material: Amber/tinted 3mm acrylic             -->
+  <!-- Material: Amber/tinted 3/16" (4.76mm) acrylic   -->
   <!-- Wall-mounted. Devices mount directly to this.  -->
   <!-- SCALE: 1:1 — 1 viewBox unit = 1mm             -->
   <!-- ============================================ -->
@@ -38,33 +38,35 @@
     <!-- These holes align with the cover's corners    -->
     <!-- ============================================ -->
 
-    <!-- Cover panel corner standoffs -->
-    <circle cx="15" cy="15" r="1.6"/>
-    <circle cx="289.8" cy="15" r="1.6"/>
-    <circle cx="15" cy="340" r="1.6"/>
-    <circle cx="289.8" cy="340" r="1.6"/>
+    <!-- Cover panel corner standoffs (20mm inset — clears wall-mount holes) -->
+    <circle cx="20" cy="20" r="1.6"/>
+    <circle cx="284.8" cy="20" r="1.6"/>
+    <circle cx="20" cy="325" r="1.6"/>
+    <circle cx="284.8" cy="325" r="1.6"/>
 
     <!-- Cover panel mid-edge standoffs (for rigidity) -->
-    <circle cx="152.4" cy="15" r="1.6"/>
-    <circle cx="152.4" cy="340" r="1.6"/>
-    <circle cx="15" cy="177.5" r="1.6"/>
-    <circle cx="289.8" cy="177.5" r="1.6"/>
+    <circle cx="152.4" cy="20" r="1.6"/>
+    <circle cx="152.4" cy="325" r="1.6"/>
+    <circle cx="20" cy="172.5" r="1.6"/>
+    <circle cx="284.8" cy="172.5" r="1.6"/>
 
     <!-- Center standoff -->
-    <circle cx="152.4" cy="177.5" r="1.6"/>
+    <circle cx="152.4" cy="172.5" r="1.6"/>
 
     <!-- ============================================ -->
     <!-- BADGE MOUNTING HOLES (M3, with standoffs)    -->
-    <!-- Badge: 254 x 51mm, left-aligned at bottom    -->
+    <!-- Badge: 254 x 51mm, centered at bottom        -->
+    <!-- Badge left edge at x=25.4 ((304.8-254)/2)    -->
     <!-- Badge top edge at y=355.4 (345 + 10mm gap)   -->
     <!-- Badge bottom edge at y=406.4                  -->
+    <!-- Holes match badge standoff holes (8mm inset)  -->
     <!-- ============================================ -->
 
-    <!-- Badge standoff holes (4 corners of badge area) -->
-    <circle cx="20" cy="363" r="1.6"/>
-    <circle cx="258" cy="363" r="1.6"/>
-    <circle cx="20" cy="399" r="1.6"/>
-    <circle cx="258" cy="399" r="1.6"/>
+    <!-- Badge standoff holes (4 corners, symmetric) -->
+    <circle cx="33.4" cy="363.4" r="1.6"/>
+    <circle cx="271.4" cy="363.4" r="1.6"/>
+    <circle cx="33.4" cy="398.4" r="1.6"/>
+    <circle cx="271.4" cy="398.4" r="1.6"/>
 
     <!-- Ventilation slots (top edge, for convective airflow) -->
     <rect x="80" y="2" width="20" height="4" rx="1"/>
@@ -85,7 +87,7 @@
     <rect x="10" y="416.4" width="25.4" height="25.4"/>
     <text x="10" y="413" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
     <text x="40" y="428" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
-    <text x="40" y="434" fill="#00AA00" font-size="2" letter-spacing="0.2">AMBER BACKBOARD | 3mm ACRYLIC | 304.8 × 406.4mm (12" × 16")</text>
+    <text x="40" y="434" fill="#00AA00" font-size="2" letter-spacing="0.2">AMBER BACKBOARD | 3/16" (4.76mm) ACRYLIC | 304.8 × 406.4mm (12" × 16")</text>
     <text x="40" y="440" fill="#00AA00" font-size="2" letter-spacing="0.2">DEVICES MOUNT DIRECTLY — ARTISTS DRILL OWN HOLES</text>
   </g>
 

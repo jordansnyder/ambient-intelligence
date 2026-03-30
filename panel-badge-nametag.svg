@@ -7,8 +7,8 @@
   <!-- ============================================ -->
   <!-- BLACK ACRYLIC BADGE / NAMETAG                 -->
   <!-- 254mm × 51mm (10" × 2")                       -->
-  <!-- Material: Black 3mm acrylic                    -->
-  <!-- Left-aligned on amber backboard, bottom zone   -->
+  <!-- Material: Black 3/16" (4.76mm) acrylic          -->
+  <!-- Centered on amber backboard, bottom zone        -->
   <!-- Mounted with M3 standoffs for depth/pop        -->
   <!-- SCALE: 1:1 — 1 viewBox unit = 1mm             -->
   <!-- ============================================ -->
@@ -108,7 +108,7 @@
     <rect x="10" y="61" width="25.4" height="25.4"/>
     <text x="10" y="58" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
     <text x="40" y="73" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
-    <text x="40" y="79" fill="#00AA00" font-size="2" letter-spacing="0.2">BLACK BADGE | 3mm ACRYLIC | 254 × 51mm | OLED: ER-OLEDM032-1Y (100.5 × 33.5mm)</text>
+    <text x="40" y="79" fill="#00AA00" font-size="2" letter-spacing="0.2">BLACK BADGE | 3/16" (4.76mm) ACRYLIC | 254 × 51mm | OLED: ER-OLEDM032-1Y (100.5 × 33.5mm)</text>
     <text x="40" y="85" fill="#00AA00" font-size="2" letter-spacing="0.2">NOTE: Verify OLED mounting holes against actual module before cutting.</text>
   </g>
 

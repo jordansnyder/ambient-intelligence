@@ -19,7 +19,7 @@
   <!-- ============================================ -->
   <!-- CONTROL SURFACE PANEL                        -->
   <!-- 280mm x 170mm  (~11" x 6.7")                -->
-  <!-- Material: Smoked 3mm Acrylic                 -->
+  <!-- Material: Smoked 3/16" (4.76mm) Acrylic                 -->
   <!-- LAYER: CUT (RED #FF0000)                     -->
   <!-- LAYER: ETCH-DEEP (BLUE #0000FF)              -->
   <!-- LAYER: ETCH-LIGHT (GREEN #00AA00)            -->
@@ -214,7 +214,7 @@
     <rect x="12" y="145" width="256" height="0.15" opacity="0.4"/>
 
     <!-- Minimal metadata -->
-    <text x="14" y="152" font-size="1.6" letter-spacing="0.3" opacity="0.5">INPUTS: 4× ROTARY [10kΩ] | INTERFACE: ESP32 → UNREAL ENGINE | MATERIAL: 3mm SMOKED ACRYLIC</text>
+    <text x="14" y="152" font-size="1.6" letter-spacing="0.3" opacity="0.5">INPUTS: 4× ROTARY [10kΩ] | INTERFACE: ESP32 → UNREAL ENGINE | MATERIAL: 3/16" (4.76mm) SMOKED ACRYLIC</text>
 
     <!-- Scale ruler -->
     <line x1="14" y1="158" x2="114" y2="158" stroke="#0000FF" stroke-width="0.1" opacity="0.35"/>
@@ -287,7 +287,7 @@
     <rect x="10" y="180" width="25.4" height="25.4"/>
     <text x="10" y="177" fill="#00AA00" font-size="2.5" letter-spacing="0.3">CALIBRATION: 1 INCH = 25.4mm</text>
     <text x="40" y="192" fill="#00AA00" font-size="2" letter-spacing="0.2">SCALE 1:1 — 1 unit = 1mm</text>
-    <text x="40" y="198" fill="#00AA00" font-size="2" letter-spacing="0.2">CONTROL SURFACE | 3mm SMOKED ACRYLIC | 280 × 170mm</text>
+    <text x="40" y="198" fill="#00AA00" font-size="2" letter-spacing="0.2">CONTROL SURFACE | 3/16" (4.76mm) SMOKED ACRYLIC | 280 × 170mm</text>
   </g>
 
 </svg>
