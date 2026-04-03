@@ -12,7 +12,16 @@
       "WebFetch(domain:www.buydisplay.com)",
       "WebSearch",
       "WebFetch(domain:newhavendisplay.com)",
-      "WebFetch(domain:cdn-shop.adafruit.com)"
+      "WebFetch(domain:cdn-shop.adafruit.com)",
+      "Bash(wc -l /Users/jordansnyder/Dev/ambient-intelligence/panel-*.svg)",
+      "Bash(pip3 list:*)",
+      "Bash(python3 -c \"import numpy; print\\(''numpy'', numpy.__version__\\)\")",
+      "Bash(python3 -c \"import trimesh; print\\(''trimesh'', trimesh.__version__\\)\")",
+      "Bash(python3 -c \"import shapely; print\\(''shapely'', shapely.__version__\\)\")",
+      "Bash(python3 -m venv /Users/jordansnyder/Dev/ambient-intelligence/.venv)",
+      "Bash(source /Users/jordansnyder/Dev/ambient-intelligence/.venv/bin/activate)",
+      "Bash(python3 generate_panel_stl.py)",
+      "WebFetch(domain:www.adafruit.com)"
     ]
   }
 }
