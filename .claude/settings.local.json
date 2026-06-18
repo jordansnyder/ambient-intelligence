@@ -21,7 +21,23 @@
       "Bash(python3 -m venv /Users/jordansnyder/Dev/ambient-intelligence/.venv)",
       "Bash(source /Users/jordansnyder/Dev/ambient-intelligence/.venv/bin/activate)",
       "Bash(python3 generate_panel_stl.py)",
-      "WebFetch(domain:www.adafruit.com)"
+      "WebFetch(domain:www.adafruit.com)",
+      "Bash(find /Users/jordansnyder/Dev/ambient-intelligence -type f -name *.stl -o -name *.scad -o -name *.3mf -o -name *.step -o -name *.stp)",
+      "Bash(find /Users/jordansnyder/Dev/ambient-intelligence -maxdepth 1 -type f -name *.py -o -name *.xlsx -o -name *.html)",
+      "Bash(find . -maxdepth 2 -type f \\\\\\(-iname *.stl -o -iname *.scad -o -iname *.3mf -o -iname *.step -o -iname *.stp -o -iname *.svg -o -iname *.pdf \\\\\\) ! -path */.venv/* ! -path */.git/*)",
+      "Bash(python3 -c \"import trimesh; import shapely; print\\(''trimesh'', trimesh.__version__\\); print\\(''shapely'', shapely.__version__\\)\")",
+      "Bash(/Users/jordansnyder/Dev/ambient-intelligence/.venv/bin/python3 -c \"import trimesh; import shapely; print\\(''trimesh'', trimesh.__version__\\); print\\(''shapely'', shapely.__version__\\)\")",
+      "Bash(/Users/jordansnyder/Dev/ambient-intelligence/.venv/bin/python3 -c \":*)",
+      "Bash(.venv/bin/python3 generate_pedestal_mount.py)",
+      "Bash(.venv/bin/pip install:*)",
+      "Bash(.venv/bin/python3 -c \":*)",
+      "Bash(python3 -c \"from matplotlib.textpath import TextPath; print\\(''matplotlib OK''\\)\")",
+      "Bash(find /Users/jordansnyder/Dev/ambient-intelligence -type f \\\\\\(-name *.uproject -o -name DefaultGame.ini -o -name DefaultEngine.ini -o -name *.h -o -name *.cpp \\\\\\))",
+      "Bash(git -C /Users/jordansnyder/Dev/ambient-intelligence log --oneline)",
+      "Bash(cat /Users/jordansnyder/Dev/ambient-intelligence/.github/workflows/*.yml)",
+      "Bash(git -C /Users/jordansnyder/Dev/ambient-intelligence config --list)",
+      "Bash(git -C /Users/jordansnyder/Dev/ambient-intelligence log --all --oneline)",
+      "Bash(wc -l /Users/jordansnyder/Dev/ambient-intelligence/*.py)"
     ]
   }
 }

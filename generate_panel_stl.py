@@ -13,6 +13,8 @@ Output:
 import numpy as np
 from shapely.geometry import Polygon, MultiPolygon, box
 from shapely.ops import unary_union
+from matplotlib.textpath import TextPath
+from matplotlib.font_manager import FontProperties
 import trimesh
 import os
 
@@ -21,7 +23,7 @@ import os
 # ============================================
 
 PANEL_W = 250.0       # fits Bambu A1 (256mm bed)
-PANEL_H = 170.0
+PANEL_H = 145.0       # was 170 — trimmed ~1" (25mm)
 PANEL_T = 4.0         # thinner — 4mm for M3 through-hardware
 CORNER_R = 5.0
 
@@ -36,50 +38,50 @@ POT_X_START = 50.0    # centered: (250 - 3*50) / 2
 POT_SPACING = 50.0    # 26mm knob-to-knob clearance
 POT_COUNT = 4
 
-# Anti-rotation tab slot — TIGHTENED for snug 3D-print fit
-# P160 tab is nominally 3.0 x 1.5mm; oversized slightly for print tolerance
-SLOT_W = 3.2          # was 3.5 — tighter on tab width
-SLOT_H = 1.8          # was 2.0 — tighter on tab depth
-SLOT_R = 0.15         # was 0.3 — sharper corners grip better
+# Anti-rotation tab slot — VERY TIGHT for zero-play 3D-print fit
+# P160 tab is nominally 3.0 x 1.5mm; near-nominal for interference fit
+SLOT_W = 3.05         # was 3.2 — near-nominal, relies on print shrink for grip
+SLOT_H = 1.6          # was 1.8 — just 0.1mm over nominal, very snug
+SLOT_R = 0.10         # was 0.15 — nearly square corners lock the tab
 SLOT_OFFSET_Y = 7.8   # mm above shaft center
 
 # M3 through-holes for back-mounted boards (3.2mm clearance)
 M3_D = 3.2
 
-# ── Arduino NG ──────────────────────────────────────────
+# ── Arduino NG (rotated 90° CW — USB faces top edge) ───
 # Board: ~68.6 x 53.3mm (2.7" x 2.1")
-# Classic pre-R3 mounting holes (from board lower-left origin):
-#   (14.0, 2.54), (15.24, 50.8), (66.04, 7.62), (66.04, 35.56)
-# Placed in lower-left zone of panel, below pots
-ARDUINO_ORIGIN_X = 28.0    # board lower-left X on panel
-ARDUINO_ORIGIN_Y = 107.0   # board lower-left Y on panel
-ARDUINO_HOLES = [           # relative to board origin
-    (14.0,  2.54),          # near USB/reset corner
-    (15.24, 50.8),          # opposite USB corner
-    (66.04,  7.62),         # near power jack
-    (66.04, 35.56),         # near analog pins
+# Rotated so USB connector edge points toward Y=0 (panel top).
+# Rotation maps board (bx, by) → panel-relative (by, bx),
+# so the rotated footprint is 53.3mm wide × 68.6mm tall.
+# Centered horizontally in the top zone, above the pots.
+# Rotated footprint: 53.3mm wide × 68.6mm tall → bottom edge at Y=73.6
+# Pot hardware starts at Y≈82 → 8.4mm clearance
+ARDUINO_ORIGIN_X = 98.0    # centered: (250 - 53.3) / 2 ≈ 98
+ARDUINO_ORIGIN_Y = 5.0     # tight to top edge for max pot clearance
+ARDUINO_HOLES = [           # relative to board origin, AFTER rotation
+    ( 2.54, 14.0),          # near USB/reset corner (top-left)
+    (50.8,  15.24),         # opposite USB corner (top-right)
+    ( 7.62, 66.04),         # near power jack (bottom-left)
+    (35.56, 66.04),         # near analog pins (bottom-right)
 ]
 
 # ── Adafruit 1/4-size Perma-Proto (product 1608) ────────
 # Board: 43 x 50.8mm (1.7" x 2.0")
 # 2 mounting holes, 35.56mm (1.4") apart along the LONG axis,
 #   centered on board width (x = 21.5mm from left edge)
-# Available zone: y=120 (30mm clear of pot bodies) to y=160 (before edge mounts)
-#   → 50mm window for a 50.8mm board — tight but fits
-# Board origin placed so top hole clears pot wiring,
-#   bottom hole stays well inside panel
-PROTO_ORIGIN_X = 155.0     # board lower-left X on panel
-PROTO_ORIGIN_Y = 110.0     # board lower-left Y on panel
+# Placed in top zone, right of Arduino (Arduino occupies x=98-152)
+# Board spans x=175-218, y=8-59 — clears Arduino and top mount holes
+PROTO_ORIGIN_X = 175.0     # board lower-left X on panel
+PROTO_ORIGIN_Y = 8.0       # top zone, same side as Arduino
 PROTO_BOARD_W = 43.0       # 1.7"
 PROTO_BOARD_H = 50.8       # 2.0"
 PROTO_HOLES = [             # relative to board origin — 2 holes along long axis
     (43.0 / 2,  (50.8 - 35.56) / 2),          # upper hole (y≈7.6, → panel y≈117.6)
     (43.0 / 2,  (50.8 + 35.56) / 2),          # lower hole (y≈43.2, → panel y≈153.2)
 ]
-# Result: holes at panel (176.5, 117.6) and (176.5, 153.2)
-#   upper hole: 27.6mm from pots — clears P160 body + wiring
-#   lower hole: 16.8mm from panel edge — fully inside
-#   board top edge at y=160.8 — just under edge mount at y=162
+# Result: holes at panel (196.5, 15.6) and (196.5, 51.2)
+#   both holes in top zone, well clear of pots at y=90
+#   board bottom edge at y=58.8 — 31mm above pot zone
 
 # ── Weight-relief cutouts ───────────────────────────────
 # Big windows in dead zones to cut print time
@@ -87,17 +89,27 @@ PROTO_HOLES = [             # relative to board origin — 2 holes along long ax
 RELIEF_R = 5.0
 RELIEF_WINDOWS = [
     # (x, y, w, h) — positioned to avoid all holes with margin
-    # Upper left:  between top-edge mounts and pot zone
-    (20,  20,   95,  52),
-    # Upper right: mirror of upper left (gap for mid-mount at x=125)
-    (135, 20,   97,  52),
-    # Lower center: gap between Arduino and Proto board zones
-    (102, 110,  45,  45),
-    # Lower far-right: right of Proto board zone
-    (202, 110,  30,  45),
-    # Arduino viewing window: see the board from the front!
-    (50,  122,  30,  25),
+    # Arduino occupies x≈98-152, y=5-74; Proto occupies x=175-218, y=8-59
+    # Top-left: left of Arduino (small)
+    (25,  22,   40,  30),
+    # Arduino viewing window: between the 4 Arduino mount holes (keep full size)
+    (110, 26,   20,  38),
+    # Lower-left: below pots (small)
+    (25,  103,  40,  20),
+    # Lower-center: below pots (small)
+    (108, 103,  35,  20),
+    # Lower-right: freed up by Proto moving to top (small)
+    (160, 103,  40,  20),
 ]
+
+# ── Embossed title text ────────────────────────────────
+TEXT_STRING = "SIGINT::OPTICS"
+TEXT_FONT_SIZE = 8.0      # mm cap height
+TEXT_EMBOSS_H = 0.8       # mm raised above panel surface
+# Centered between middle (x=125) and right (x=242) mount holes,
+# on their shared centerline (y=137)
+TEXT_CENTER_X = (125.0 + 242.0) / 2   # 183.5
+TEXT_CENTER_Y = PANEL_H - MOUNT_INSET  # 137.0
 
 # Circle resolution
 CIRCLE_SEGMENTS = 64
@@ -130,6 +142,48 @@ def circle(cx, cy, d, segments=CIRCLE_SEGMENTS):
     r = d / 2
     angles = np.linspace(0, 2 * np.pi, segments, endpoint=False)
     return Polygon([(cx + r * np.cos(a), cy + r * np.sin(a)) for a in angles])
+
+
+def text_to_polygons(text, x, y, size, font_family='monospace'):
+    """Convert a text string to positioned Shapely polygons.
+
+    Uses matplotlib's TextPath for vector outlines, then classifies
+    contours as outer boundaries vs. holes (e.g. inside 'O', 'P').
+    Returns a single (Multi)Polygon translated to (x, y).
+    """
+    fp = FontProperties(family=font_family, weight='bold')
+    tp = TextPath((0, 0), text, size=size, prop=fp)
+    raw = tp.to_polygons()
+
+    # Build valid shapely polygons from each contour
+    contours = []
+    for pts in raw:
+        if len(pts) >= 3:
+            p = Polygon(pts)
+            if not p.is_valid:
+                p = p.buffer(0)
+            if not p.is_empty:
+                contours.append(p)
+
+    # Sort largest-first; large contours are letter outlines,
+    # smaller ones nested inside are holes (counter-punches)
+    contours.sort(key=lambda p: p.area, reverse=True)
+    outers, holes = [], []
+    for c in contours:
+        is_hole = any(o.contains(c) for o in outers)
+        (holes if is_hole else outers).append(c)
+
+    result = unary_union(outers)
+    if holes:
+        result = result.difference(unary_union(holes))
+
+    from shapely.affinity import translate, scale
+    # Rotate 180° — panel Y=0 is the physical top, so text needs full rotation
+    result = scale(result, xfact=-1, yfact=-1, origin=(0, 0))
+    # After 180° rotation the text bbox is in negative space; shift it so
+    # its lower-left corner lands at (x, y)
+    bx = result.bounds  # (minx, miny, maxx, maxy)
+    return translate(result, xoff=x - bx[0], yoff=y - bx[1])
 
 
 def polygon_to_mesh(polygon, height):
@@ -228,6 +282,27 @@ def main():
     # --- Extrude to 3D ---
     print("\n  Extruding to 3D...")
     mesh = polygon_to_mesh(panel_2d, PANEL_T)
+
+    # --- Embossed title text ---
+    print(f"\n  Embossed text: \"{TEXT_STRING}\"")
+    # First pass at origin to measure, then re-center on target point
+    text_raw = text_to_polygons(TEXT_STRING, 0, 0, TEXT_FONT_SIZE)
+    tb = text_raw.bounds  # (minx, miny, maxx, maxy)
+    tw, th = tb[2] - tb[0], tb[3] - tb[1]
+    text_x = TEXT_CENTER_X - tw / 2
+    text_y = TEXT_CENTER_Y - th / 2
+    text_poly = text_to_polygons(TEXT_STRING, text_x, text_y,
+                                 TEXT_FONT_SIZE)
+    if not text_poly.is_empty:
+        text_mesh = polygon_to_mesh(text_poly, TEXT_EMBOSS_H)
+        # Shift up to sit on top of the panel surface
+        text_mesh.apply_translation([0, 0, PANEL_T])
+        mesh = trimesh.util.concatenate([mesh, text_mesh])
+        bx = text_poly.bounds  # (minx, miny, maxx, maxy)
+        print(f"    Position: ({bx[0]:.1f}, {bx[1]:.1f}) to ({bx[2]:.1f}, {bx[3]:.1f})")
+        print(f"    Emboss height: {TEXT_EMBOSS_H} mm above panel")
+    else:
+        print("    WARNING: text polygon is empty — skipping")
 
     print(f"  Mesh: {len(mesh.vertices)} verts, {len(mesh.faces)} faces")
     print(f"  Bounds: X=[{mesh.bounds[0][0]:.1f}, {mesh.bounds[1][0]:.1f}]"
